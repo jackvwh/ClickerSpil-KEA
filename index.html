@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virus Attack</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+    <div id="screen">
+        <div id="game">
+            <div id="game_background">
+                <!-- <img src="images/empty2.png" alt="desk"> -->
+            </div>
+
+            <div id="game_elements">
+                <div id="virusBlue_container">
+                    <img id="virusBlue_sprite" src="images/Blue_Virus.png" alt="virus1">
+                </div>
+                <div id="virusGreen_container" class="fastLeft">
+                    <img id="virusGreen_sprite" src="images/Green_Virus.png" alt="virus2">
+                </div>
+                <div id="virusRed_container" class="fastLeft">
+                    <img id="virusRed_sprite" src="images/Red_Virus.png" alt="virus3">
+                </div>
+                <div id="virusCorona_container">
+                    <img id="virusCorona_sprite" src="images/Pink_Virus_Corona.png" alt="CoronaVirus">
+                </div>
+                <div id="update_container">
+                    <img id="update_sprite" src="images/Windows-Update-en-Windows-7.png" alt="update">
+            </div>
+
+            <div id="game_foreground">
+                <img id="oldPc_sprite" src="images/Generic_Windows_XP_PC.png" alt="Old PC">
+            </div>
+
+            <div id="game_ui">
+                <div id="clock_container">
+                    <img id="clock" src="images/Clock_Icon.png" alt="timeBoard">
+                    <span id="time">0</span>
+                </div>
+                <div id="health_container">
+                    <img id="health1" src="images/poo_favi.png" class="active_heart">
+                    <img id="health2" src="images/poo_favi.png" class="active_heart">
+                    <img id="health3" src="images/poo_favi.png" class="active_heart">
+
+                </div>
+                <div id="score_container">
+                    <span id="score">0</span>
+                    <img src="images/scoreBoard.png" alt="scoreBoard">
+                </div>
+            </div>
+        </div> 
+
+        <div id="start" class="hidden">
+            <img src="images/Start_BTN.png" alt="">
+        </div>
+        <div id="game_over" class="hidden">
+            <img src="images/getty-virus-detected.png" alt=" VIRUS DETECTED!">
+        </div>
+        <div id="level_complete" class="hidden"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
