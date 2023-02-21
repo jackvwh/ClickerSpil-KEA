@@ -118,13 +118,13 @@ body {
 /* Animations */
 .fastLeft {
     animation-name: fastLeft;
-    animation-duration: 2s;
+    animation-duration: 3s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
 @keyframes fastLeft {
     from {
-      transform: translateX(100%);
+      transform: translateX(700%);
     }
     to {
       transform: translateX(-100%);

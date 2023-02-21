@@ -4,14 +4,14 @@ window.addEventListener("load", start);
 
 let points = 0;
 let lives = 3; 
-let color = ["Blue", "Green", "Red", "Corona"];
+let virusArr = ["Blue", "Green", "Red", "Corona"];
 
 function start() {
   console.log("JavaScript kører!");
     // Start animationer
     document.querySelector("#virusCorona_container").classList.add("fastLeft");
     document.querySelector("#virusBlue_container").classList.add("fastLeft");
-    document.querySelector("#update_container").classList.add("fastLeft");
+    document.querySelector("#update_container").classList.add("slowLeft");
 
     // Registrer click
     document.querySelector("#virusCorona_container").addEventListener("click", clickVirusCorona);
@@ -105,11 +105,11 @@ function clickVirusCorona() {
     document.querySelector("#virusBlue_sprite").classList.add("zoom_in");
   
     // når forsvind-animation er færdig: coinGone
-    document.querySelector("#virusBlue_container").addEventListener("animationend", function() {virusGoneZoomIn(color[0])});
+    document.querySelector("#virusBlue_container").addEventListener("animationend", function() {virusGoneZoomIn( virusArr[0]) });
     decrementLives();
   }
   
-  function virusGoneZoomIn(color) {
+  function virusGoneZoomIn(virusArr) {
     console.log("virusGONE")
     // fjern event der bringer os herind
     document.querySelector(`#virus${color}_container`).removeEventListener("animationend", `clickVirus${color}`);
@@ -121,12 +121,12 @@ function clickVirusCorona() {
     document.querySelector(`#virus${color}_container`).classList.remove("paused");
   
     // genstart falling animation
-    document.querySelector(`#virus${color}_container`).classList.remove("fastLeft");
-    document.querySelector(`#virus${color}_container`).offsetWidth;
-    document.querySelector(`#virus${color}_container`).classList.add("fastLeft");
+    // document.querySelector(`#virus${color}_container`).classList.remove("fastLeft");
+    // document.querySelector(`#virus${color}_container`).offsetWidth;
+    // document.querySelector(`#virus${color}_container`).classList.add("fastLeft");
   
     // gør det muligt at klikke på coin igen
-    document.querySelector("#virusBlue_container").addEventListener("click", clickBomb);
+    document.querySelector(`#virus${color}_container`).addEventListener("click", `clickVirus${color}`);
   }
   function decrementLives(){
     console.log("decrement");
