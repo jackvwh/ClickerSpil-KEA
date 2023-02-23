@@ -45,7 +45,7 @@ body {
   top: 36%;
   left: 25%;
 }
-#oldPc_sprite{
+#game_foreground img{
   width: 100%;
 }
 #virusBlue_container {
@@ -152,11 +152,11 @@ body {
     top: 55%;  
 }
 @keyframes fastLeft1 {
-    from {
-      transform: translateX(100%);
+    0% {
+      transform: translate(100%);
     }
-    to {
-      transform: translateX(-100%);
+    100% {
+      transform: translate(-100%);
     }
 }
 .fastLeft2 {
