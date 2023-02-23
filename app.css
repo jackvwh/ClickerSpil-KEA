@@ -8,6 +8,12 @@ body {
     display: grid;
     grid-template: 100% / 100%;    
 }
+@media screen and (max-width: 600px){
+  #virusBlue_container img, #virusRed_container img, #virusCorona_container img, #virusGreen_container img, #game_foreground img {
+    width: 50px;
+    height: 50px;
+  }
+}
 
 #game {
     grid-area: 1 / 1;   
@@ -19,6 +25,8 @@ body {
     display: grid;
     grid-area: 1 /1;
     background-image: url(images/empty2.png);
+    overflow: hidden;
+    background-repeat: no-repeat;
     background-size: cover;
     z-index: 0;
 }
@@ -41,8 +49,7 @@ body {
 }
 #virusBlue_container {
     position: absolute;
-    top: 35vw;
-    left: 85vw;
+    scale: 1.5; 
 }
 
 #virusBlue_sprite {
@@ -51,8 +58,6 @@ body {
 
 #virusGreen_container {
     position: absolute;
-    top: 40vw;
-    left: 70vw;
 }
 
 #virusGreen_sprite {
@@ -60,9 +65,7 @@ body {
 }
 
 #virusRed_container {
-    position: absolute;
-    top: 29vw;
-    left: 70vw;
+    position: absolute;   
 }
 
 #virusRed_sprite {
@@ -71,8 +74,6 @@ body {
 
 #virusCorona_container {
     position: absolute;
-    top: 30vw;
-    left: 80vw;
 }
 
 #virusCorona_sprite {
@@ -81,8 +82,6 @@ body {
 
 #update_container {
     position: absolute;
-    top: 35vw;
-    left: 75vw;
 }
 #update_sprite {
     width: 100%;
@@ -101,42 +100,128 @@ body {
 #clock_container{
   text-align: center;
 }
+
 #score_container{
   text-align: center;
 }
+
 #score_container img{
    width: 35%;
 }
+
 #health_container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
+
 #health_container img{
     width: 60%;
 }
 
-/* Animations */
-.fastLeft {
-    animation-name: fastLeft;
-    animation-duration: 3s;
+/* Animations start positions and speed */
+.fastLeft1 {
+    animation-name: fastLeft1;
+    animation-duration: 2s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
+    top: 55%;
+    left: 90%;  
 }
-@keyframes fastLeft {
+@keyframes fastLeft1 {
+    from {
+      transform: translateX(200%);
+    }
+    to {
+      transform: translateX(-700%);
+    }
+}
+.fastLeft2 {
+    animation-name: fastLeft2;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    top: 65%;
+    left: 90%;
+}
+@keyframes fastLeft2 {
     from {
       transform: translateX(700%);
     }
     to {
-      transform: translateX(-100%);
+      transform: translateX(-300%);
     }
 }
-.fastRight {
-    animation-name: fastRight;
+.fastLeft3 {
+    animation-name: fastLeft3;
     animation-duration: 2s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
+    top: 70%;
+    left: 70%;
 }
-@keyframes fastRight {
+@keyframes fastLeft3 {
+    from {
+      transform: translateX(700%);
+    }
+    to {
+      transform: translateX(-300%);
+    }
+}
+.slowLeft1 {
+  animation-name: slowLeft1;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  top: 55%;
+}
+@keyframes slowLeft1 {
+from {
+  transform: translateX(100%);
+}
+to {
+  transform: translateX(-150%);
+}
+}
+.slowLeft2 {
+  animation-name: slowLeft2;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  top: 65%;
+  left: 90%;
+}
+@keyframes slowLeft2 {
+from {
+  transform: translateX(100%);
+}
+to {
+  transform: translateX(-150%);
+}
+}
+.slowLeft3 {
+  animation-name: slowLeft3;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  top: 75%;
+  left: 90%;
+}
+@keyframes slowLeft3 {
+from {
+  transform: translateX(100%);
+}
+to {
+  transform: translateX(-150%);
+}
+}
+.fastRight1 {
+    animation-name: fastRight1;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    top: 55%;
+}
+@keyframes fastRight1 {
     from {
       transform: translateX(-100%);
     }
@@ -144,82 +229,188 @@ body {
       transform: translateX(100%);
     }
 }
-.slowLeft {
-    animation-name: slowLeft;
-    animation-duration: 4s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-@keyframes slowLeft {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
-.slowRight {
-    animation-name: slowRight;
-    animation-duration: 4s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-@keyframes slowRight {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(100%);
-  }
-}
-.fastTop {
-    animation-name: fastTop;
+.fastRight2 {
+    animation-name: fastRight2;
     animation-duration: 2s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
+    top: 65%;
 }
-@keyframes fastTop {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(-100%);
-  }
+@keyframes fastRight2 {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(100%);
+    }
 }
-.slowTop{
-    animation-name: slowTop;
+.fastRight3 {
+    animation-name: fastRight3;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    top: 75%;
+}
+@keyframes fastRight3 {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(100%);
+    }
+}
+.slowRight1 {
+    animation-name: slowRight1;
     animation-duration: 4s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
+    top: 55%;
 }
-@keyframes slowTop {
+@keyframes slowRight1{
   from {
-    transform: translateY(100%);
+    transform: translateX(-100%);
   }
   to {
+    transform: translateX(150%);
+  }
+}
+.slowRight2 {
+    animation-name: slowRight2;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    top: 65%;
+}
+@keyframes slowRight2 {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(150%);
+  }
+}
+.slowRight3 {
+    animation-name: slowRight3;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    top: 75%;
+}
+@keyframes slowRight3 {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(150%);
+  }
+}
+.fastTop1 {
+    animation-name: fastTop1;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    left: 20%;
+}
+@keyframes fastTop1 {
+  from {
     transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+.fastTop2 {
+    animation-name: fastTop2;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    left: 40%;
+}
+@keyframes fastTop2 {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+.fastTop3 {
+    animation-name: fastTop3;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    left: 60%;
+}
+@keyframes fastTop3 {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+.slowTop1{
+    animation-name: slowTop1;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    left: 20%;
+}
+@keyframes slowTop1 {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+.slowTop2{
+    animation-name: slowTop2;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    left: 40%;
+  }
+@keyframes slowTop2 {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+.slowTop3{
+    animation-name: slowTop3;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    left: 60%;
+}
+@keyframes slowTop3 {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
   }
 }
 
 .hidden{
     display: none;
 }
-.active_heart {
+.active_windows {
   filter: drop-shadow(0 0 2px yellow);
 }
-
-.broken_heart {
+.broken_windows {
    filter: grayscale(75%) blur(.5px);
 }
-
-
+/* animations for CLICK events */
 .falling {
     animation-name: falling;
     animation-duration: 4s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
-
 @keyframes falling {
     0% {
         transform: translate(0,-100%);
@@ -228,15 +419,14 @@ body {
     100% {
         transform: translate(0,56.25vw);
     }
-  }
+}
 
 .zoom_out {
     animation-name: zoom_out;
-    animation-duration: 1s;
+    animation-duration: 3s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
-
 @keyframes zoom_out {
   0% {
       transform: scale(1);
@@ -248,12 +438,11 @@ body {
 
 .zoom_in {
     animation-name: zoom_in;
-    animation-duration: 1s;
+    animation-duration: 3s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     image-rendering: pixelated;
 }
-
 @keyframes zoom_in {
     0% {
         transform: scale(1);
@@ -265,12 +454,11 @@ body {
 
 .spiral {
     animation-name: spiral;
-    animation-duration: 2s;
+    animation-duration: 4s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     transform-origin: 50% 150%;
 }
-
 @keyframes spiral {
     0% {
         transform: rotate(0deg) scale(1);
@@ -279,15 +467,14 @@ body {
         transform: rotate(720deg) scale(0);
     }
 }
+
 .beam #yellow_sprite {
   opacity: 1;
-
   animation-name: beam;
   animation-duration: 0.5s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in;
 }
-
 @keyframes beam {
   0% {
       transform: scale(0.5) rotate(00deg) translate(0px, 0px);
@@ -297,16 +484,37 @@ body {
       transform: scale(1) rotate(30deg) translate(20px, 25px);
   }
 }
+.fallover {
+  transform-origin: bottom center;
+  animation-name: fallover;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+@keyframes fallover {
+  0% {
+      transform: rotateX(0);
+  }
+  100% {
+      transform: rotateX(90deg);
+  }
+}
 
 /* tilt animation */
-
 .tilt {
   transform-origin: bottom left;
-  
   animation-name: tilt;
   animation-duration: 1s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+}
+@keyframes tilt {
+  0% {
+      rotate: 0deg;
+  }
+  100% {
+      rotate: -30deg;
+  }
 }
 
 .untilt {
@@ -319,27 +527,18 @@ body {
   animation-fill-mode: backwards;
 }
 
-@keyframes tilt {
-  0% {
-      rotate: 0deg;
-  }
-  100% {
-      rotate: -30deg;
-  }
-}
-
 .fade_out {
   animation-name: fade_out;
   animation-duration: 1s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
-
 @keyframes fade_out {
   0% {opacity: 1;}
   100% {opacity: 0;}
 }
 
+/* extra animation classes cpy/pste ;)*/
 .jump {
   animation-name: jump;
   animation-duration: .3s;
@@ -353,7 +552,6 @@ body {
   animation-iteration-count: 2;
   animation-direction: alternate;
 }
-
 @keyframes jump {
   0% {
       translate: 0 0;
@@ -368,7 +566,6 @@ body {
   animation-duration: 2s;
   animation-iteration-count: infinite;
 }
-
 @keyframes move-around {
   0% {
       translate: 0 0;
@@ -395,7 +592,6 @@ body {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
-
 @keyframes move {
   0% {
       translate: -55vw; 
@@ -405,21 +601,5 @@ body {
   }
 }
 
-.fallover {
-  transform-origin: bottom center;
-  animation-name: fallover;
-  animation-duration: .3s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-}
-
-@keyframes fallover {
-  0% {
-      transform: rotateX(0);
-  }
-  100% {
-      transform: rotateX(90deg);
-  }
-}
 
   
