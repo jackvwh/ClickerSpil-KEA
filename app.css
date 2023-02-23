@@ -33,7 +33,8 @@ body {
 
 #game_elements {
   position: relative;
-     grid-area: 1 /1;
+  overflow: hidden;
+  grid-area: 1 /1;
 }
 
 /* positioning elements */
@@ -48,8 +49,7 @@ body {
   width: 100%;
 }
 #virusBlue_container {
-    position: absolute;
-    scale: 1.5; 
+    position: absolute; 
 }
 
 #virusBlue_sprite {
@@ -104,6 +104,11 @@ body {
 #score_container{
   text-align: center;
 }
+#score{
+  position: absolute;
+  top: 30px;
+  right: 59px;
+}
 
 #score_container img{
    width: 35%;
@@ -117,6 +122,26 @@ body {
 #health_container img{
     width: 60%;
 }
+#game_over {
+  grid-area: 1 /1;
+  z-index: 999;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background-image: linear-gradient(150deg, #c90303 0%, #790909 100%);
+  color: #ffffff;
+}
+
+#level_complete {
+  grid-area: 1 /1;
+  z-index: 999;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background-image: linear-gradient(150deg, #20c903 0%, #09793b 100%);
+  color: #ffffff;
+}
+
 
 /* Animations start positions and speed */
 .fastLeft1 {
@@ -124,15 +149,14 @@ body {
     animation-duration: 2s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
-    top: 55%;
-    left: 90%;  
+    top: 55%;  
 }
 @keyframes fastLeft1 {
     from {
-      transform: translateX(200%);
+      transform: translateX(100%);
     }
     to {
-      transform: translateX(-700%);
+      transform: translateX(-100%);
     }
 }
 .fastLeft2 {
@@ -395,9 +419,11 @@ to {
   }
 }
 
-.hidden{
-    display: none;
+.hidden, #game_over.hidden,
+#level_complete.hidden{
+    display: none;    
 }
+
 .active_windows {
   filter: drop-shadow(0 0 2px yellow);
 }
