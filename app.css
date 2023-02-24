@@ -435,7 +435,7 @@ to {
     animation-name: falling;
     animation-duration: 4s;
     animation-timing-function: linear;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
 }
 @keyframes falling {
     0% {
