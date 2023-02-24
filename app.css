@@ -6,12 +6,13 @@ body {
 #screen {
     aspect-ratio: 16/9;
     display: grid;
+    grid-area: 1 / 1;
     grid-template: 100% / 100%;    
 }
 @media screen and (max-width: 600px){
   #virusBlue_container img, #virusRed_container img, #virusCorona_container img, #virusGreen_container img, #game_foreground img {
-    width: 50px;
-    height: 50px;
+    width: 50%;
+    height: 50%;
   }
 }
 
@@ -51,35 +52,27 @@ body {
 #virusBlue_container {
     position: absolute; 
 }
-
 #virusBlue_sprite {
     width: 100%;   
 }
-
 #virusGreen_container {
     position: absolute;
 }
-
 #virusGreen_sprite {
     width: 100%;
 }
-
 #virusRed_container {
     position: absolute;   
 }
-
 #virusRed_sprite {
     width: 100%;
 }
-
 #virusCorona_container {
     position: absolute;
 }
-
 #virusCorona_sprite {
     width: 100%;
 }
-
 #update_container {
     position: absolute;
 }
@@ -146,161 +139,166 @@ body {
 /* Animations start positions and speed */
 .fastLeft1 {
     animation-name: fastLeft1;
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    top: 55%;  
-}
-@keyframes fastLeft1 {
-    0% {
-      transform: translate(100%);
-    }
-    100% {
-      transform: translate(-100%);
-    }
-}
-.fastLeft2 {
-    animation-name: fastLeft2;
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    top: 65%;
-    left: 90%;
-}
-@keyframes fastLeft2 {
-    from {
-      transform: translateX(700%);
-    }
-    to {
-      transform: translateX(-300%);
-    }
-}
-.fastLeft3 {
-    animation-name: fastLeft3;
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    top: 70%;
-    left: 70%;
-}
-@keyframes fastLeft3 {
-    from {
-      transform: translateX(700%);
-    }
-    to {
-      transform: translateX(-300%);
-    }
-}
-.slowLeft1 {
-  animation-name: slowLeft1;
-  animation-duration: 4s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  top: 55%;
-}
-@keyframes slowLeft1 {
-from {
-  transform: translateX(100%);
-}
-to {
-  transform: translateX(-150%);
-}
-}
-.slowLeft2 {
-  animation-name: slowLeft2;
-  animation-duration: 4s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  top: 65%;
-  left: 90%;
-}
-@keyframes slowLeft2 {
-from {
-  transform: translateX(100%);
-}
-to {
-  transform: translateX(-150%);
-}
-}
-.slowLeft3 {
-  animation-name: slowLeft3;
-  animation-duration: 4s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  top: 75%;
-  left: 90%;
-}
-@keyframes slowLeft3 {
-from {
-  transform: translateX(100%);
-}
-to {
-  transform: translateX(-150%);
-}
-}
-.fastRight1 {
-    animation-name: fastRight1;
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    top: 55%;
-}
-@keyframes fastRight1 {
-    from {
-      transform: translateX(-100%);
-    }
-    to {
-      transform: translateX(100%);
-    }
-}
-.fastRight2 {
-    animation-name: fastRight2;
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    top: 65%;
-}
-@keyframes fastRight2 {
-    from {
-      transform: translateX(-100%);
-    }
-    to {
-      transform: translateX(100%);
-    }
-}
-.fastRight3 {
-    animation-name: fastRight3;
-    animation-duration: 2s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    top: 75%;
-}
-@keyframes fastRight3 {
-    from {
-      transform: translateX(-100%);
-    }
-    to {
-      transform: translateX(100%);
-    }
-}
-.slowRight1 {
-    animation-name: slowRight1;
     animation-duration: 4s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
-    top: 55%;
+    top: 45%;  
+    right: 1%;
+}
+@keyframes fastLeft1 {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-800%);
+  }
+}
+.fastLeft2 {
+    animation-name: fastLeft2;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    top: 57%;
+    right: 1%;
+}
+@keyframes fastLeft2 {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-800%);
+  }
+}
+.fastLeft3 {
+    animation-name: fastLeft3;
+    animation-duration:4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    top: 70%;
+    right: 1%;
+}
+@keyframes fastLeft3 {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-800%);
+  }
+}
+.slowLeft1 {
+  animation-name: slowLeft1;
+  animation-duration: 8s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  top: 50%;
+  right: 1%;
+}
+@keyframes slowLeft1 {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-800%);
+  }
+}
+.slowLeft2 {
+  animation-name: slowLeft2;
+  animation-duration: 8s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  top: 63%;
+  right: 1%;
+}
+@keyframes slowLeft2 {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-800%);
+  }
+}
+.slowLeft3 {
+  animation-name: slowLeft3;
+  animation-duration: 8s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  top: 73%;
+  right: 1%;
+}
+@keyframes slowLeft3 {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-800%);
+  }
+}
+.fastRight1 {
+    animation-name: fastRight1;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    top: 50%;
+    left: 1%;
+}
+@keyframes fastRight1 {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(700%);
+  }
+}
+.fastRight2 {
+    animation-name: fastRight2;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    top: 60%;
+    left: 1%;
+}
+@keyframes fastRight2 {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(700%);
+  }
+}
+.fastRight3 {
+    animation-name: fastRight3;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    top: 76%;
+    left: 1%;
+}
+@keyframes fastRight3 {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(700%);
+  }
+}
+.slowRight1 {
+    animation-name: slowRight1;
+    animation-duration: 8s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    top: 50%;
 }
 @keyframes slowRight1{
   from {
     transform: translateX(-100%);
   }
   to {
-    transform: translateX(150%);
+    transform: translateX(700%);
   }
 }
 .slowRight2 {
     animation-name: slowRight2;
-    animation-duration: 4s;
+    animation-duration: 8s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     top: 65%;
@@ -310,12 +308,12 @@ to {
     transform: translateX(-100%);
   }
   to {
-    transform: translateX(150%);
+    transform: translateX(700%);
   }
 }
 .slowRight3 {
     animation-name: slowRight3;
-    animation-duration: 4s;
+    animation-duration: 8s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     top: 75%;
@@ -325,27 +323,27 @@ to {
     transform: translateX(-100%);
   }
   to {
-    transform: translateX(150%);
+    transform: translateX(2000%);
   }
 }
 .fastTop1 {
     animation-name: fastTop1;
-    animation-duration: 2s;
+    animation-duration: 5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
-    left: 20%;
+    left: 33%;
 }
 @keyframes fastTop1 {
   from {
     transform: translateY(-100%);
   }
   to {
-    transform: translateY(100%);
+    transform: translateY(600%);
   }
 }
 .fastTop2 {
     animation-name: fastTop2;
-    animation-duration: 2s;
+    animation-duration: 5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     left: 40%;
@@ -355,67 +353,67 @@ to {
     transform: translateY(-100%);
   }
   to {
-    transform: translateY(100%);
+    transform: translateY(600%);
   }
 }
 .fastTop3 {
     animation-name: fastTop3;
-    animation-duration: 2s;
+    animation-duration: 5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
-    left: 60%;
+    left: 67%;
 }
 @keyframes fastTop3 {
   from {
     transform: translateY(-100%);
   }
   to {
-    transform: translateY(100%);
+    transform: translateY(600%);
   }
 }
 .slowTop1{
     animation-name: slowTop1;
-    animation-duration: 4s;
+    animation-duration: 8s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
-    left: 20%;
+    left: 38%;
 }
 @keyframes slowTop1 {
   from {
     transform: translateY(-100%);
   }
   to {
-    transform: translateY(100%);
+    transform: translateY(600%);
   }
 }
 .slowTop2{
     animation-name: slowTop2;
-    animation-duration: 4s;
+    animation-duration: 8s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
-    left: 40%;
+    left: 45%;
   }
 @keyframes slowTop2 {
   from {
     transform: translateY(-100%);
   }
   to {
-    transform: translateY(100%);
+    transform: translateY(600%);
   }
 }
 .slowTop3{
     animation-name: slowTop3;
-    animation-duration: 4s;
+    animation-duration: 8s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
-    left: 60%;
+    left: 65%;
 }
 @keyframes slowTop3 {
   from {
     transform: translateY(-100%);
   }
   to {
-    transform: translateY(100%);
+    transform: translateY(600%);
   }
 }
 
@@ -477,7 +475,6 @@ to {
         transform: scale(10);
     }
 }
-
 .spiral {
     animation-name: spiral;
     animation-duration: 4s;

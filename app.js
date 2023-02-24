@@ -6,12 +6,14 @@ const WON = 10;
 let points = 0;
 let lives = 3;
 
+// HTML element variables
 const virusCorona = document.querySelector("#virusCorona_container");
 const virusBlue = document.querySelector("#virusBlue_container");
 const virusRed = document.querySelector("#virusRed_container");
 const virusGreen = document.querySelector("#virusGreen_container");
 const virusUpdate = document.querySelector("#update_container");
 
+// object key varibles to create object key/value pairs
 const corona = "corona";
 const blue = "blue";
 const red = "red";
@@ -19,13 +21,11 @@ const green = "green";
 const update = "update";
 
 const container = {corona:"#virusCorona_container", blue:"#virusBlue_container",red:"#virusRed_container",green:"#virusGreen_container", update:"#update_container"}
-
 const sprites = {corona:"#virusCorona_sprite", blue:"#virusBlue_sprite",red:"#virusRed_sprite",green:"#virusGreen_sprite", update:"#update_sprite"}
-
 const animation = ["fastLeft1", "fastLeft2", "fastLeft3", "slowLeft1", "slowLeft2", "slowLeft3", "slowRight1", "slowRight2", "slowRight3", "fastRight1", "fastRight2", "fastRight3", "fastTop1", "fastTop2", "fastTop3", "slowTop1", "slowTop2", "slowTop3"];
-
 const clickAnimation = ["falling", "zoom_out", "zoom_in", "spiral", "fallover"];
 
+// empty object array for storing current animations
 let currentAnimation = {};
 
 window.addEventListener("load", start);
@@ -33,7 +33,7 @@ window.addEventListener("load", start);
 function start() {
   console.log("APP.JS kører!");
     // Start animationer
-    // virusCorona.classList.add("fastLeft1");
+    // virusCorona.classList.add("fastLeft2");
     virusCorona.classList.add(randomVirusAnimation(corona));
     virusBlue.classList.add(randomVirusAnimation(blue));
     virusRed.classList.add(randomVirusAnimation(red));
@@ -42,23 +42,17 @@ function start() {
 
     // Registrer click og kald vilkårlig animation til element og gem i object currentAnimation
     virusCorona.addEventListener("click", function(){randomVirusClickAnimation(sprites.corona, container.corona, corona)});
-
     virusBlue.addEventListener("click", function(){randomVirusClickAnimation(sprites.blue, container.blue, blue)});
-
     virusRed.addEventListener("click", function(){randomVirusClickAnimation(sprites.red, container.red, red)});
-
     virusGreen.addEventListener("click", function(){randomVirusClickAnimation(sprites.green, container.green, green)});
-
     virusUpdate.addEventListener("click", function(){randomVirusClickAnimation(sprites.update, container.update, update)});
 }
 // random animation 
 function randomVirusAnimation(current){
   console.log("random animation");
-  console.log("current is -->",current);
   // console.log("random animation added");
   /*****  random container animation*/
   let i = Math.floor( (Math.random() * animation.length));
-
   currentAnimation[current] = animation[i];
 
   console.log("saved " + animation[i] + " in currentAnimation Object key: " + current);
@@ -73,27 +67,25 @@ function randomVirusClickAnimation(sprite, container, current){
   document.querySelector(container).removeEventListener("click", function() {randomVirusClickAnimation(sprite, container, current)});
 
   // check for lives decrement 
-  if (sprite == "#update_sprite"){
+  if (sprite === "#update_sprite"){
     decrementLives();
   } 
   else {
     incrementPoints();
   }
-
+// remove animation
   document.querySelector(container).classList.remove(currentAnimation[current]);
-  console.log("remove current class in ClickFunc ->" + currentAnimation[current]);
 
   document.querySelector(container).classList.add("paused");
-
   /*****  random clickAnimation */
   let i = Math.floor( (Math.random() * clickAnimation.length));
   document.querySelector(sprite).classList.add(clickAnimation[i]);
-  console.log("click Animation added-->" + clickAnimation[i])  
 
+  
   virusRestart(sprite, container, clickAnimation[i], current); 
 }
 
-// // general function to all animation restarts-- SEMI WORKING
+// // general function to all animation restarts
 function virusRestart(sprite, container, clickAnimation, current) {
   console.log("virusRestart");
   // fjern event der bringer os herind
@@ -114,7 +106,7 @@ function virusRestart(sprite, container, clickAnimation, current) {
   document.querySelector(container).classList.add(randomVirusAnimation(current));
   console.log("New random class added = ", currentAnimation[current] + " to " + container);
 
-  // gør det muligt at klikke på igen
+  // gør det muligt at klikke på container igen
   document.querySelector(container).addEventListener("click", function() {randomVirusClickAnimation(sprite, container, current);});
   console.log("add eventListener again on:", container);
 }
@@ -169,7 +161,7 @@ function levelComplete(){
 function end() {
   console.log("JavaScript SLUTTER!");
     // slut animationer
-    virusCorona.classList.remove(currentAnimation[corona]);
+    virusCorona.classList.remove(currentAnimation.corona);
     virusBlue.classList.remove(currentAnimation[blue]);
     virusRed.classList.remove(currentAnimation[red]);
     virusGreen.classList.remove(currentAnimation[green]);
@@ -177,13 +169,9 @@ function end() {
 
     // Fjern click 
     virusCorona.removeEventListener("click", function(){randomVirusClickAnimation(sprites.corona, container.corona, corona)});
-
     virusBlue.removeEventListener("click", function(){randomVirusClickAnimation(sprites.blue, container.blue, blue)});
-
     virusRed.removeEventListener("click", function(){randomVirusClickAnimation(sprites.red, container.red, red)});
-
     virusGreen.removeEventListener("click", function(){randomVirusClickAnimation(sprites.green, container.green, green)});
-
     virusUpdate.removeEventListener("click", function(){randomVirusClickAnimation(sprites.update, container.update, update)});
 }
 
