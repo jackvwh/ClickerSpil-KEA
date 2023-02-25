@@ -194,14 +194,13 @@ function displayPoints(){
 
 function gameOver(){
   console.log("GameOVer");
-  document.querySelector("#game_over").classList.remove("hidden")
-
+  document.querySelector("#game_over").classList.remove("hidden");
   end();
 }
 
 function levelComplete(){
   console.log("levelCompletted");
-  document.querySelector("#level_complete").classList.remove("hidden")
+  document.querySelector("#level_complete").classList.remove("hidden");
   end();
 }
 
@@ -209,23 +208,39 @@ function end() {
   console.log("JavaScript SLUTTER!");
     // slut animationer
     virusCorona.classList.remove(currentAnimation[corona]);
+    virusCorona2.classList.remove(currentAnimation[corona2]);
     virusBlue.classList.remove(currentAnimation[blue]);
+    virusBlue2.classList.remove(currentAnimation[blue2]);
     virusRed.classList.remove(currentAnimation[red]);
+    virusRed2.classList.remove(currentAnimation[red2]);
     virusGreen.classList.remove(currentAnimation[green]);
+    virusGreen2.classList.remove(currentAnimation[green2]);
     virusPink.classList.remove(currentAnimation[pink]);
+    virusPink2.classList.remove(currentAnimation[pink2]);
     virusYellow.classList.remove(currentAnimation[yellow]);
+    virusYellow2.classList.remove(currentAnimation[yellow2]);
+    virusYellow3.classList.remove(currentAnimation[yellow3]);
     virusUpdate.classList.remove(currentAnimation[update]);
     virusUpdate2.classList.remove(currentAnimation[update2]);
     virusUpdate3.classList.remove(currentAnimation[update3]);
 
     // Fjern click 
     virusCorona.removeEventListener("click", function(){randomVirusClickAnimation(sprites[corona], container[corona], corona)});
+    virusCorona.removeEventListener("click", function(){randomVirusClickAnimation(sprites[corona2], container[corona2], corona2)});
     virusBlue.removeEventListener("click", function(){randomVirusClickAnimation(sprites[blue], container[blue], blue)});
+    virusBlue.removeEventListener("click", function(){randomVirusClickAnimation(sprites[blue2], container[blue2], blue2)});
     virusRed.removeEventListener("click", function(){randomVirusClickAnimation(sprites[red], container[red], red)});
+    virusRed2.removeEventListener("click", function(){randomVirusClickAnimation(sprites[red2], container[red2], red2)});
     virusGreen.removeEventListener("click", function(){randomVirusClickAnimation(sprites[green], container[green], green)});
+    virusGreen2.removeEventListener("click", function(){randomVirusClickAnimation(sprites[green2], container[green2], green2)});
     virusPink.removeEventListener("click", function(){randomVirusClickAnimation(sprites[pink], container[pink], pink)});
+    virusPink2.removeEventListener("click", function(){randomVirusClickAnimation(sprites[pink2], container[pink2], pink2)});
     virusYellow.removeEventListener("click", function(){randomVirusClickAnimation(sprites[yellow], container[yellow], yellow)});
+    virusYellow2.removeEventListener("click", function(){randomVirusClickAnimation(sprites[yellow2], container[yellow2], yellow2)});
+    virusYellow3.removeEventListener("click", function(){randomVirusClickAnimation(sprites[yellow3], container[yellow3], yellow3)});
     virusUpdate.removeEventListener("click", function(){randomVirusClickAnimation(sprites[update], container[update], update)});
+    virusUpdate2.removeEventListener("click", function(){randomVirusClickAnimation(sprites[update2], container[update2], update2)});
+    virusUpdate3.removeEventListener("click", function(){randomVirusClickAnimation(sprites[update3], container[update3], update3)});
 }
 
 
