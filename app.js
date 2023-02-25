@@ -107,15 +107,8 @@ function randomVirusAnimation(current){
 function randomVirusClickAnimation(sprite, container, current){
   console.log("click random animations");
   // fjern click
-  document.querySelector(container).removeEventListener("click", function() {randomVirusClickAnimation(sprites[current], container[current], current)});
+  document.querySelector(container).removeEventListener("click", function() {randomVirusClickAnimation(sprites.current, container.current, current)});
 
-  // check for lives decrement 
-  if (sprite === "#update_sprite" || sprite === "#update2_sprite" || sprite === "#update3_sprite"){
-    decrementLives();
-  } 
-  else {
-    incrementPoints();
-  }
 // remove animation
   document.querySelector(container).classList.remove(currentAnimation[current]);
 
@@ -126,6 +119,14 @@ function randomVirusClickAnimation(sprite, container, current){
   console.log("Added CLICK animation --> ", clickAnimation[i])
 
   document.querySelector(sprite).addEventListener("animationend", virusRestart(sprite, container, clickAnimation[i], current));
+
+  // check for lives decrement 
+  if (sprite === "#update_sprite" || sprite === "#update2_sprite" || sprite === "#update3_sprite"){
+    decrementLives();
+  } 
+  else {
+    incrementPoints();
+  }
    
 }
 
@@ -225,10 +226,10 @@ function end() {
     virusUpdate3.classList.remove(currentAnimation[update3]);
 
     // Fjern click 
-    virusCorona.removeEventListener("click", function(){randomVirusClickAnimation(sprites[corona], container[corona], corona)});
-    virusCorona.removeEventListener("click", function(){randomVirusClickAnimation(sprites[corona2], container[corona2], corona2)});
-    virusBlue.removeEventListener("click", function(){randomVirusClickAnimation(sprites[blue], container[blue], blue)});
-    virusBlue.removeEventListener("click", function(){randomVirusClickAnimation(sprites[blue2], container[blue2], blue2)});
+    virusCorona.removeEventListener("click", function(){randomVirusClickAnimation(sprites.corona, container.corona, corona)});
+    virusCorona.removeEventListener("click", function(){randomVirusClickAnimation(sprites.corona2, container.corona2, corona2)});
+    virusBlue.removeEventListener("click", function(){randomVirusClickAnimation(sprites.blue, container.blue, blue)});
+    virusBlue.removeEventListener("click", function(){randomVirusClickAnimation(sprites.blue2, container[blue2], blue2)});
     virusRed.removeEventListener("click", function(){randomVirusClickAnimation(sprites[red], container[red], red)});
     virusRed2.removeEventListener("click", function(){randomVirusClickAnimation(sprites[red2], container[red2], red2)});
     virusGreen.removeEventListener("click", function(){randomVirusClickAnimation(sprites[green], container[green], green)});
