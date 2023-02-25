@@ -39,7 +39,6 @@ body {
 }
 
 /* positioning elements */
-
 #game_foreground {
   position: absolute;
   z-index: 1;
@@ -49,11 +48,44 @@ body {
 #game_foreground img{
   width: 100%;
 }
+#virusCorona_container {
+  position: absolute;
+}
+#virusCorona_sprite {
+  width: 100%;
+}
+#virusCorona2_container {
+  position: absolute;
+}
+#virusCorona2_sprite {
+  width: 100%;
+}
 #virusBlue_container {
     position: absolute; 
+    scale: 1.5;
 }
 #virusBlue_sprite {
     width: 100%;   
+}
+#virusBlue2_container {
+    position: absolute; 
+    scale: 1.5;
+}
+#virusBlue2_sprite {
+    width: 100%;   
+}
+#virusRed_container {
+  position: absolute;   
+}
+#virusRed_sprite {
+  width: 100%;
+}
+#virusRed2_container {
+  position: absolute;   
+  scale: 1.5;
+}
+#virusRed2_sprite {
+  width: 100%;
 }
 #virusGreen_container {
     position: absolute;
@@ -61,22 +93,63 @@ body {
 #virusGreen_sprite {
     width: 100%;
 }
-#virusRed_container {
-    position: absolute;   
+#virusGreen2_container {
+    position: absolute;
+    scale: 1.5;
 }
-#virusRed_sprite {
+#virusGreen2_sprite {
     width: 100%;
 }
-#virusCorona_container {
+#virusPink_container {
+    position: absolute;
+    scale: 1.5;
+}
+#virusPink_sprite {
+    width: 100%;
+}
+#virusPink2_container {
     position: absolute;
 }
-#virusCorona_sprite {
+#virusPink2_sprite {
+    width: 100%;
+}
+#virusYellow_container {
+    position: absolute;
+}
+#virusYellow_sprite {
+    width: 100%;
+}
+#virusYellow2_container {
+    position: absolute;
+    scale: 1.5;
+}
+#virusYellow2_sprite {
+    width: 100%;
+}
+#virusYellow3_container {
+    position: absolute;
+    scale: 1.5;
+}
+#virusYellow3_sprite {
     width: 100%;
 }
 #update_container {
     position: absolute;
 }
 #update_sprite {
+    width: 100%;
+}
+#update2_container {
+    position: absolute;
+}
+#update2_sprite {
+    width: 100%;
+}
+#update3_container {
+    position: absolute;
+    scale: 1.5;
+}
+#update3_sprite {
     width: 100%;
 }
 #game_ui{
@@ -139,7 +212,7 @@ body {
 /* Animations start positions and speed */
 .fastLeft1 {
     animation-name: fastLeft1;
-    animation-duration: 4s;
+    animation-duration: 12s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     top: 45%;  
@@ -155,7 +228,7 @@ body {
 }
 .fastLeft2 {
     animation-name: fastLeft2;
-    animation-duration: 4s;
+    animation-duration: 10s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     top: 57%;
@@ -171,7 +244,7 @@ body {
 }
 .fastLeft3 {
     animation-name: fastLeft3;
-    animation-duration:4s;
+    animation-duration:10s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     top: 70%;
@@ -187,7 +260,7 @@ body {
 }
 .slowLeft1 {
   animation-name: slowLeft1;
-  animation-duration: 8s;
+  animation-duration: 17s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   top: 50%;
@@ -203,7 +276,7 @@ body {
 }
 .slowLeft2 {
   animation-name: slowLeft2;
-  animation-duration: 8s;
+  animation-duration: 17s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   top: 63%;
@@ -219,7 +292,7 @@ body {
 }
 .slowLeft3 {
   animation-name: slowLeft3;
-  animation-duration: 8s;
+  animation-duration: 17s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   top: 73%;
@@ -235,7 +308,7 @@ body {
 }
 .fastRight1 {
     animation-name: fastRight1;
-    animation-duration: 5s;
+    animation-duration: 12s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     top: 50%;
@@ -251,7 +324,7 @@ body {
 }
 .fastRight2 {
     animation-name: fastRight2;
-    animation-duration: 5s;
+    animation-duration: 12s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     top: 60%;
@@ -267,7 +340,7 @@ body {
 }
 .fastRight3 {
     animation-name: fastRight3;
-    animation-duration: 5s;
+    animation-duration: 12s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     top: 76%;
@@ -283,7 +356,7 @@ body {
 }
 .slowRight1 {
     animation-name: slowRight1;
-    animation-duration: 8s;
+    animation-duration: 19s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     top: 50%;
@@ -298,7 +371,7 @@ body {
 }
 .slowRight2 {
     animation-name: slowRight2;
-    animation-duration: 8s;
+    animation-duration: 19s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     top: 65%;
@@ -313,7 +386,7 @@ body {
 }
 .slowRight3 {
     animation-name: slowRight3;
-    animation-duration: 8s;
+    animation-duration: 19s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     top: 75%;
@@ -328,7 +401,7 @@ body {
 }
 .fastTop1 {
     animation-name: fastTop1;
-    animation-duration: 5s;
+    animation-duration: 11s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     left: 33%;
@@ -343,7 +416,7 @@ body {
 }
 .fastTop2 {
     animation-name: fastTop2;
-    animation-duration: 5s;
+    animation-duration: 11s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     left: 40%;
@@ -358,7 +431,7 @@ body {
 }
 .fastTop3 {
     animation-name: fastTop3;
-    animation-duration: 5s;
+    animation-duration: 11s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     left: 67%;
@@ -373,7 +446,7 @@ body {
 }
 .slowTop1{
     animation-name: slowTop1;
-    animation-duration: 8s;
+    animation-duration: 19s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     left: 38%;
@@ -388,7 +461,7 @@ body {
 }
 .slowTop2{
     animation-name: slowTop2;
-    animation-duration: 8s;
+    animation-duration: 19s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     left: 45%;
@@ -403,7 +476,7 @@ body {
 }
 .slowTop3{
     animation-name: slowTop3;
-    animation-duration: 8s;
+    animation-duration: 19s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     left: 65%;
@@ -447,7 +520,7 @@ body {
 
 .zoom_out {
     animation-name: zoom_out;
-    animation-duration: 3s;
+    animation-duration: 4s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -462,7 +535,7 @@ body {
 
 .zoom_in {
     animation-name: zoom_in;
-    animation-duration: 3s;
+    animation-duration: 4s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     image-rendering: pixelated;
