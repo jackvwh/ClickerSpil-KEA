@@ -332,11 +332,11 @@ to {
     }
 }
 
-.beam #yellow_sprite {
+.beam {
   opacity: 1;
   animation-name: beam;
-  animation-duration: 0.5s;
-  animation-iteration-count: infinite;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
   animation-timing-function: ease-in;
 }
 @keyframes beam {
@@ -364,7 +364,7 @@ to {
   }
 }
 
-/* tilt animation */
+tilt animation
 .tilt {
   transform-origin: bottom left;
   animation-name: tilt;

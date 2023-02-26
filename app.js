@@ -48,7 +48,7 @@ const sprites = {corona:"#virusCorona_sprite", corona2:"#virusCorona2_sprite", b
 
 // Animations
 const animation = ["right", "left", "top"];
-const clickAnimation = ["falling", "zoom_out", "zoom_in", "spiral", "fallover"];
+const clickAnimation = ["falling", "zoom_out", "zoom_in", "spiral", "fallover", "fade_out", "beam", ];
 // empty object array for storing current animations
 let currentAnimation = {};
 
@@ -57,7 +57,6 @@ window.addEventListener("load", start);
 function start() {
   console.log("APP.JS kører!");
     // Start animationer
-    // virusCorona.classList.add("fastLeft2");
     randomVirusAnimation(container.corona ,corona);
     randomVirusAnimation(container.corona2,corona2);
     randomVirusAnimation(container.blue, blue);
@@ -138,6 +137,7 @@ function randomVirusClickAnimation(sprite, container, current){
   // Adding CLICK animation to element
   document.querySelector(sprite).classList.add(clickAnimation[i]);
   console.log("Added CLICK animation: ", clickAnimation[i] + " -> To sprite: " + sprite)
+  
   // 
   document.querySelector(sprite).addEventListener("animationend", function() {virusRestart(sprite, container, clickAnimation[i], current)});
 
@@ -148,14 +148,13 @@ function randomVirusClickAnimation(sprite, container, current){
   else {
     incrementPoints();
   }
-   
 }
 
 // // general function to all animation restarts
 function virusRestart(sprite, container, clickAnimation, current) {
   console.log("virusRestart");
   // fjern event der bringer os herind
-  document.querySelector(container).removeEventListener("animationend", function(){virusRestart(sprite, container, clickAnimation, current)});
+  document.querySelector(sprite).removeEventListener("animationend", function(){virusRestart(sprite, container, clickAnimation, current)});
   // fjern CLICK animation
   document.querySelector(sprite).classList.remove(clickAnimation);
   console.log("remove Click animation->", clickAnimation);
@@ -166,13 +165,13 @@ function virusRestart(sprite, container, clickAnimation, current) {
   document.querySelector(container).classList.remove(currentAnimation[current]);
   // remove CSS attribute
   document.querySelector(container).removeAttribute("style");
-  // genstart animation og indsæt ny random animation
+  // genstart animation
   document.querySelector(container).classList.remove(currentAnimation[current]);
   console.log("remove current class = " + currentAnimation[current] + " from " + container );
-
+  // force reflow
   document.querySelector(container).offsetWidth;
   console.log("Reflow element: " + container);
-
+  // Add new animation
   randomVirusAnimation(container, current);
   console.log("New random class added = ", currentAnimation[current] + " to " + container);
 
@@ -186,46 +185,39 @@ function decrementLives(){
   console.log("Lives is -->", lives);
   displayDecrementWindows();
   lives--;
-  console.log("Lives is now --->", lives)
+  console.log("Lives is now --->", lives);
   if ( lives <= 0){
     gameOver();
   }
 }
-
 function displayDecrementWindows(){
   console.log("displayDecrementWindows");
-  console.log("Points= " + points + " and lives= " + lives)
+  console.log("Points= " + points + " and lives= " + lives);
   document.querySelector(`#health${lives}`).classList.remove("active_windows");
   document.querySelector(`#health${lives}`).classList.add("broken_windows");
 }
+
 function incrementPoints(){
   console.log("incrementPoints");
   points++;
   displayPoints();
-  console.log("Points= " + points + " Lives= " + lives)
+  console.log("Points= " + points + " Lives= " + lives);
   if (points === WON){
     levelComplete();
   }
 }
-
 function displayPoints(){
   document.querySelector("#score").textContent = points;
 }
 
-// function decrementPoints(){
-//   console.log("decrementPoints");
-//   points--;
-//   displayPoints();
-// }
-
 function gameOver(){
-  console.log("GameOVer");
+  console.log("GameOver");
   document.querySelector("#game_over").classList.remove("hidden");
   end();
 }
 
 function levelComplete(){
-  console.log("levelCompletted");
+  console.log("levelComplete");
   document.querySelector("#level_complete").classList.remove("hidden");
   end();
 }
@@ -250,11 +242,29 @@ function end() {
     virusUpdate2.classList.remove(currentAnimation[update2]);
     virusUpdate3.classList.remove(currentAnimation[update3]);
 
+    // remove CSS attributes
+    virusCorona.removeAttribute("style");
+    virusCorona.removeAttribute("style");
+    virusBlue.removeAttribute("style");
+    virusBlue2.removeAttribute("style");
+    virusRed.removeAttribute("style");
+    virusRed2.removeAttribute("style");
+    virusGreen.removeAttribute("style");
+    virusGreen2.removeAttribute("style");
+    virusPink.removeAttribute("style");
+    virusPink2.removeAttribute("style");
+    virusYellow.removeAttribute("style");
+    virusYellow2.removeAttribute("style");
+    virusYellow3.removeAttribute("style");
+    virusUpdate.removeAttribute("style");
+    virusUpdate2.removeAttribute("style");
+    virusUpdate3.removeAttribute("style");
+
     // Fjern click 
     virusCorona.removeEventListener("click", function(){randomVirusClickAnimation(sprites.corona, container.corona, corona)});
-    virusCorona.removeEventListener("click", function(){randomVirusClickAnimation(sprites.corona2, container.corona2, corona2)});
+    virusCorona2.removeEventListener("click", function(){randomVirusClickAnimation(sprites.corona2, container.corona2, corona2)});
     virusBlue.removeEventListener("click", function(){randomVirusClickAnimation(sprites.blue, container.blue, blue)});
-    virusBlue.removeEventListener("click", function(){randomVirusClickAnimation(sprites.blue2, container[blue2], blue2)});
+    virusBlue2.removeEventListener("click", function(){randomVirusClickAnimation(sprites.blue2, container[blue2], blue2)});
     virusRed.removeEventListener("click", function(){randomVirusClickAnimation(sprites[red], container[red], red)});
     virusRed2.removeEventListener("click", function(){randomVirusClickAnimation(sprites[red2], container[red2], red2)});
     virusGreen.removeEventListener("click", function(){randomVirusClickAnimation(sprites[green], container[green], green)});
