@@ -55,22 +55,22 @@ function start() {
   console.log("APP.JS kører!");
     // Start animationer
     // virusCorona.classList.add("fastLeft2");
-    virusCorona.classList.add(randomVirusAnimation(container.corona ,corona));
-    virusCorona2.classList.add(randomVirusAnimation(container.corona2,corona2));
-    virusBlue.classList.add(randomVirusAnimation(container.blue, blue));
-    virusBlue2.classList.add(randomVirusAnimation(container.blue2, blue2));
-    virusRed.classList.add(randomVirusAnimation(container.red, red));
-    virusRed2.classList.add(randomVirusAnimation(container.red2, red2));
-    virusGreen.classList.add(randomVirusAnimation(container.green, green));
-    virusGreen2.classList.add(randomVirusAnimation(container.green2, green2));
-    virusPink.classList.add(randomVirusAnimation(container.pink, pink));
-    virusPink2.classList.add(randomVirusAnimation(container.pink2, pink2));
-    virusYellow.classList.add(randomVirusAnimation(container.yellow, yellow));
-    virusYellow2.classList.add(randomVirusAnimation(container.yellow2, yellow2));
-    virusYellow3.classList.add(randomVirusAnimation(container.yellow3, yellow3));
-    virusUpdate.classList.add(randomVirusAnimation(container.update, update));
-    virusUpdate2.classList.add(randomVirusAnimation(container.update2, update2));
-    virusUpdate3.classList.add(randomVirusAnimation(container.update3, update3));
+    randomVirusAnimation(container.corona ,corona);
+    randomVirusAnimation(container.corona2,corona2);
+    randomVirusAnimation(container.blue, blue);
+    randomVirusAnimation(container.blue2, blue2);
+    randomVirusAnimation(container.red, red);
+    randomVirusAnimation(container.red2, red2);
+    randomVirusAnimation(container.green, green);
+    randomVirusAnimation(container.green2, green2);
+    randomVirusAnimation(container.pink, pink);
+    randomVirusAnimation(container.pink2, pink2);
+    randomVirusAnimation(container.yellow, yellow);
+    randomVirusAnimation(container.yellow2, yellow2);
+    randomVirusAnimation(container.yellow3, yellow3);
+    randomVirusAnimation(container.update, update);
+    randomVirusAnimation(container.update2, update2);
+    randomVirusAnimation(container.update3, update3);
 
     // Registrer click og kald vilkårlig animation til element og gem i object currentAnimation
     virusCorona.addEventListener("click", function(){randomVirusClickAnimation(sprites.corona, container.corona, corona)});
@@ -113,11 +113,11 @@ function randomVirusAnimation(container, current){
     document.querySelector(container).style.animationDuration = (aniDuration + "s");
   }
   else {
-    // create values for CSS properties
+    // create values for CSS attributes
     let startSide = Math.floor( (Math.random() * 80) + 45);
     let aniDuration = Math.floor( (Math.random() * 23) + 3);
     console.log("Style.top: " + startSide + " animation-duration: " + aniDuration);
-    // add/change CSS properties 
+    // add/change CSS attributes
     document.querySelector(container).style.top = (startSide + "%");
     document.querySelector(container).style.animationDuration = (aniDuration + "s");
   }
@@ -167,14 +167,14 @@ function virusRestart(sprite, container, clickAnimation, current) {
 
   document.querySelector(container).offsetWidth;
   console.log("Reflow element: " + container);
-
-  document.querySelector(container).classList.add(randomVirusAnimation(container, current));
+  
+  randomVirusAnimation(container, current);
   console.log("New random class added = ", currentAnimation[current] + " to " + container);
 
   // gør det muligt at klikke på container igen
-  document.querySelector(container).addEventListener("click", function() {randomVirusClickAnimation(sprites.current, container.current, current);});
+  // document.querySelector(container).addEventListener("click", function() {randomVirusClickAnimation(sprites.current, container.current, current);});
   
-  console.log("add eventListener again on:", container);
+  // console.log("add eventListener again on:", container);
 }
 function decrementLives(){
   console.log("decrementLives");
