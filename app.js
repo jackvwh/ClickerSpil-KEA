@@ -106,7 +106,7 @@ function randomVirusAnimation(container, current){
 
   if ( animation[i] === "top"){
 
-    // let startTop = Math.floor( (Math.random() * 65) + 30);
+    let startTop = Math.floor( (Math.random() * 65) + 30);
     let aniDuration = Math.floor( (Math.random() * 23) + 3);
 
     console.log("Style.left: " + startTop + " animation-duration: " + aniDuration);
