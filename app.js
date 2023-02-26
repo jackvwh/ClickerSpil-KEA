@@ -107,8 +107,8 @@ function randomVirusAnimation(container, current){
 
   if ( animation[i] === "top"){
     // create values for CSS properties
-    let startTop = Math.floor( (Math.random() * 65) + 30);
-    let aniDuration = Math.floor( (Math.random() * 23) + 3);
+    let startTop = Math.floor((Math.random() * (70 - 30) + 30));
+    let aniDuration = Math.floor( (Math.random() * (23 - 2) + 2));
     console.log("Style.left: " + startTop + " animation-duration: " + aniDuration);
     // add/change CSS properties 
     document.querySelector(container).style.left = (startTop + "%");
@@ -116,8 +116,8 @@ function randomVirusAnimation(container, current){
   }
   else {
     // create values for CSS attributes
-    let startSide = Math.floor( (Math.random() * 80) + 45);
-    let aniDuration = Math.floor( (Math.random() * 23) + 3);
+    let startSide = Math.floor( (Math.random() * (60 - 35) + 35));
+    let aniDuration = Math.floor( (Math.random() * (23 - 2) + 2));
     console.log("Style.top: " + startSide + " animation-duration: " + aniDuration);
     // add/change CSS attributes
     document.querySelector(container).style.top = (startSide + "%");
@@ -138,7 +138,6 @@ function randomVirusClickAnimation(sprite, container, current){
   document.querySelector(sprite).classList.add(clickAnimation[i]);
   console.log("Added CLICK animation: ", clickAnimation[i] + " -> To sprite: " + sprite)
   
-  // 
   document.querySelector(sprite).addEventListener("animationend", function() {virusRestart(sprite, container, clickAnimation[i], current)});
 
   // check for lives decrement 

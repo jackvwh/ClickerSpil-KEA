@@ -163,28 +163,26 @@ body {
     height: 9%;
     width: 40%;
 }
-#clock_container{
-  text-align: center;
-}
-
 #score_container{
   text-align: center;
 }
 #score{
   position: absolute;
   top: 30px;
-  right: 59px;
+  right: 12%;
+  scale: 2;
 }
-
 #score_container img{
-   width: 35%;
+  width: 35%;
 }
 
+#clock_container{
+  text-align: center;
+}
 #health_container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
-
 #health_container img{
     width: 60%;
 }
@@ -363,8 +361,6 @@ to {
       transform: rotateX(90deg);
   }
 }
-
-tilt animation
 .tilt {
   transform-origin: bottom left;
   animation-name: tilt;
@@ -402,7 +398,7 @@ tilt animation
   100% {opacity: 0;}
 }
 
-/* extra animation classes cpy/pste ;)*/
+/* extra animation classes cpy/pste thx ;)*/
 .jump {
   animation-name: jump;
   animation-duration: .3s;
