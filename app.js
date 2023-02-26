@@ -93,7 +93,6 @@ function start() {
 // random animation 
 function randomVirusAnimation(container, current){
   console.log("Animation being ADDED");
-  let startTop = "35%";
   /*****  random container animation*/
   let i = Math.floor( (Math.random() * animation.length));
   document.querySelector(container).classList.add(animation[i]);
@@ -105,41 +104,28 @@ function randomVirusAnimation(container, current){
   console.log("Start position and animation-duration being ADDED");
 
   if ( animation[i] === "top"){
-
+    // create values for CSS properties
     let startTop = Math.floor( (Math.random() * 65) + 30);
     let aniDuration = Math.floor( (Math.random() * 23) + 3);
-
     console.log("Style.left: " + startTop + " animation-duration: " + aniDuration);
+    // add/change CSS properties 
     document.querySelector(container).style.left = (startTop + "%");
     document.querySelector(container).style.animationDuration = (aniDuration + "s");
   }
   else {
+    // create values for CSS properties
     let startSide = Math.floor( (Math.random() * 80) + 45);
     let aniDuration = Math.floor( (Math.random() * 23) + 3);
     console.log("Style.top: " + startSide + " animation-duration: " + aniDuration);
-
+    // add/change CSS properties 
     document.querySelector(container).style.top = (startSide + "%");
     document.querySelector(container).style.animationDuration = (aniDuration + "s");
   }
   return;
 }
-// // random animation 
-// function randomVirusAnimation(current){
-//   console.log("random animation");
-//   // console.log("random animation added");
-//   /*****  random container animation*/
-//   let i = Math.floor( (Math.random() * animation.length));
-//   currentAnimation[current] = animation[i];
-
-//   console.log("saved " + animation[i] + " in currentAnimation Object key: " + current);
-//   console.log(currentAnimation);
-
-//   return animation[i];
-// }
-
 // random CLICK ANIMATION
 function randomVirusClickAnimation(sprite, container, current){
-  console.log("click random animations");
+  console.log("CLICK animation");
   // fjern click
   document.querySelector(container).removeEventListener("click", function() {randomVirusClickAnimation(sprites.current, container.current, current)});
 
@@ -150,7 +136,7 @@ function randomVirusClickAnimation(sprite, container, current){
   /*****  random clickAnimation */
   let i = Math.floor( (Math.random() * clickAnimation.length));
   document.querySelector(sprite).classList.add(clickAnimation[i]);
-  console.log("Added CLICK animation --> ", clickAnimation[i])
+  console.log("Added CLICK animation: ", clickAnimation[i] + " -> To sprite: " + sprite)
 
   document.querySelector(sprite).addEventListener("animationend", virusRestart(sprite, container, clickAnimation[i], current));
 
@@ -182,7 +168,7 @@ function virusRestart(sprite, container, clickAnimation, current) {
   document.querySelector(container).offsetWidth;
   console.log("Reflow element: " + container);
 
-  document.querySelector(container).classList.add(randomVirusAnimation(current));
+  document.querySelector(container).classList.add(randomVirusAnimation(container, current));
   console.log("New random class added = ", currentAnimation[current] + " to " + container);
 
   // gør det muligt at klikke på container igen
