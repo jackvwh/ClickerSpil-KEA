@@ -42,8 +42,11 @@ const update = "update";
 const update2 = "update2";
 const update3 = "update3";
 
+// Game elements
 const container = {corona:"#virusCorona_container", corona2:"#virusCorona2_container", blue:"#virusBlue_container", blue2:"#virusBlue2_container",red:"#virusRed_container", red2:"#virusRed2_container", green:"#virusGreen_container", green2:"#virusGreen2_container", pink:"#virusPink_container", pink2:"#virusPink2_container", yellow:"#virusYellow_container", yellow2:"#virusYellow2_container", yellow3:"#virusYellow3_container", update:"#update_container", update2:"#update2_container", update3:"#update3_container"};
 const sprites = {corona:"#virusCorona_sprite", corona2:"#virusCorona2_sprite", blue:"#virusBlue_sprite", blue2:"#virusBlue2_sprite", red:"#virusRed_sprite", red2:"#virusRed2_sprite",green:"#virusGreen_sprite", green2:"#virusGreen2_sprite", pink:"#virusPink_sprite", pink2:"#virusPink2_sprite",yellow:"#virusYellow_sprite", yellow2:"#virusYellow2_sprite", yellow3:"#virusYellow3_sprite",update:"#update_sprite", update2:"#update2_sprite", update3:"#update3_sprite"};
+
+// Animations
 const animation = ["right", "left", "top"];
 const clickAnimation = ["falling", "zoom_out", "zoom_in", "spiral", "fallover"];
 // empty object array for storing current animations
@@ -128,17 +131,15 @@ function randomVirusClickAnimation(sprite, container, current){
   console.log("CLICK animation");
   // fjern click
   document.querySelector(container).removeEventListener("click", function() {randomVirusClickAnimation(sprites.current, container.current, current)});
-
-// remove animation
-  document.querySelector(container).classList.remove(currentAnimation[current]);
-
+  // Pause animation
   document.querySelector(container).classList.add("paused");
   /*****  random clickAnimation */
   let i = Math.floor( (Math.random() * clickAnimation.length));
+  // Adding CLICK animation to element
   document.querySelector(sprite).classList.add(clickAnimation[i]);
   console.log("Added CLICK animation: ", clickAnimation[i] + " -> To sprite: " + sprite)
-
-  document.querySelector(sprite).addEventListener("animationend", virusRestart(sprite, container, clickAnimation[i], current));
+  // 
+  document.querySelector(sprite).addEventListener("animationend", function() {virusRestart(sprite, container, clickAnimation[i], current)});
 
   // check for lives decrement 
   if (sprite === "#update_sprite" || sprite === "#update2_sprite" || sprite === "#update3_sprite"){
@@ -155,19 +156,23 @@ function virusRestart(sprite, container, clickAnimation, current) {
   console.log("virusRestart");
   // fjern event der bringer os herind
   document.querySelector(container).removeEventListener("animationend", function(){virusRestart(sprite, container, clickAnimation, current)});
-  // fjern forsvind-animation
+  // fjern CLICK animation
   document.querySelector(sprite).classList.remove(clickAnimation);
   console.log("remove Click animation->", clickAnimation);
   // fjern pause  
   document.querySelector(container).classList.remove("paused");
   console.log("remove paused animation");
+  // remove animation
+  document.querySelector(container).classList.remove(currentAnimation[current]);
+  // remove CSS attribute
+  document.querySelector(container).removeAttribute("style");
   // genstart animation og indsæt ny random animation
   document.querySelector(container).classList.remove(currentAnimation[current]);
   console.log("remove current class = " + currentAnimation[current] + " from " + container );
 
   document.querySelector(container).offsetWidth;
   console.log("Reflow element: " + container);
-  
+
   randomVirusAnimation(container, current);
   console.log("New random class added = ", currentAnimation[current] + " to " + container);
 
