@@ -44,7 +44,7 @@ const update3 = "update3";
 
 const container = {corona:"#virusCorona_container", corona2:"#virusCorona2_container", blue:"#virusBlue_container", blue2:"#virusBlue2_container",red:"#virusRed_container", red2:"#virusRed2_container", green:"#virusGreen_container", green2:"#virusGreen2_container", pink:"#virusPink_container", pink2:"#virusPink2_container", yellow:"#virusYellow_container", yellow2:"#virusYellow2_container", yellow3:"#virusYellow3_container", update:"#update_container", update2:"#update2_container", update3:"#update3_container"};
 const sprites = {corona:"#virusCorona_sprite", corona2:"#virusCorona2_sprite", blue:"#virusBlue_sprite", blue2:"#virusBlue2_sprite", red:"#virusRed_sprite", red2:"#virusRed2_sprite",green:"#virusGreen_sprite", green2:"#virusGreen2_sprite", pink:"#virusPink_sprite", pink2:"#virusPink2_sprite",yellow:"#virusYellow_sprite", yellow2:"#virusYellow2_sprite", yellow3:"#virusYellow3_sprite",update:"#update_sprite", update2:"#update2_sprite", update3:"#update3_sprite"};
-const animation = ["fastLeft1", "fastLeft2", "fastLeft3", "slowLeft1", "slowLeft2", "slowLeft3", "slowRight1", "slowRight2", "slowRight3", "fastRight1", "fastRight2", "fastRight3", "fastTop1", "fastTop2", "fastTop3", "slowTop1", "slowTop2", "slowTop3"];
+const animation = ["right", "left", "top"];
 const clickAnimation = ["falling", "zoom_out", "zoom_in", "spiral", "fallover"];
 // empty object array for storing current animations
 let currentAnimation = {};
@@ -55,22 +55,22 @@ function start() {
   console.log("APP.JS kører!");
     // Start animationer
     // virusCorona.classList.add("fastLeft2");
-    virusCorona.classList.add(randomVirusAnimation(corona));
-    virusCorona2.classList.add(randomVirusAnimation(corona2));
-    virusBlue.classList.add(randomVirusAnimation(blue));
-    virusBlue2.classList.add(randomVirusAnimation(blue2));
-    virusRed.classList.add(randomVirusAnimation(red));
-    virusRed2.classList.add(randomVirusAnimation(red2));
-    virusGreen.classList.add(randomVirusAnimation(green));
-    virusGreen2.classList.add(randomVirusAnimation(green2));
-    virusPink.classList.add(randomVirusAnimation(pink));
-    virusPink2.classList.add(randomVirusAnimation(pink2));
-    virusYellow.classList.add(randomVirusAnimation(yellow));
-    virusYellow2.classList.add(randomVirusAnimation(yellow2));
-    virusYellow3.classList.add(randomVirusAnimation(yellow3));
-    virusUpdate.classList.add(randomVirusAnimation(update));
-    virusUpdate2.classList.add(randomVirusAnimation(update2));
-    virusUpdate3.classList.add(randomVirusAnimation(update3));
+    virusCorona.classList.add(randomVirusAnimation(container.corona ,corona));
+    virusCorona2.classList.add(randomVirusAnimation(container.corona2,corona2));
+    virusBlue.classList.add(randomVirusAnimation(container.blue, blue));
+    virusBlue2.classList.add(randomVirusAnimation(container.blue2, blue2));
+    virusRed.classList.add(randomVirusAnimation(container.red, red));
+    virusRed2.classList.add(randomVirusAnimation(container.red2, red2));
+    virusGreen.classList.add(randomVirusAnimation(container.green, green));
+    virusGreen2.classList.add(randomVirusAnimation(container.green2, green2));
+    virusPink.classList.add(randomVirusAnimation(container.pink, pink));
+    virusPink2.classList.add(randomVirusAnimation(container.pink2, pink2));
+    virusYellow.classList.add(randomVirusAnimation(container.yellow, yellow));
+    virusYellow2.classList.add(randomVirusAnimation(container.yellow2, yellow2));
+    virusYellow3.classList.add(randomVirusAnimation(container.yellow3, yellow3));
+    virusUpdate.classList.add(randomVirusAnimation(container.update, update));
+    virusUpdate2.classList.add(randomVirusAnimation(container.update2, update2));
+    virusUpdate3.classList.add(randomVirusAnimation(container.update3, update3));
 
     // Registrer click og kald vilkårlig animation til element og gem i object currentAnimation
     virusCorona.addEventListener("click", function(){randomVirusClickAnimation(sprites.corona, container.corona, corona)});
@@ -91,18 +91,52 @@ function start() {
     virusUpdate3.addEventListener("click", function(){randomVirusClickAnimation(sprites.update3, container.update3, update3)});
 }
 // random animation 
-function randomVirusAnimation(current){
-  console.log("random animation");
-  // console.log("random animation added");
+function randomVirusAnimation(container, current){
+  console.log("Animation being ADDED");
+  let startTop = "35%";
   /*****  random container animation*/
   let i = Math.floor( (Math.random() * animation.length));
+  document.querySelector(container).classList.add(animation[i]);
   currentAnimation[current] = animation[i];
-
   console.log("saved " + animation[i] + " in currentAnimation Object key: " + current);
   console.log(currentAnimation);
 
-  return animation[i];
+  // random start position and speed selecting
+  console.log("Start position and animation-duration being ADDED");
+
+  if ( animation[i] === "top"){
+
+    // let startTop = Math.floor( (Math.random() * 65) + 30);
+    let aniDuration = Math.floor( (Math.random() * 23) + 3);
+
+    console.log("Style.left: " + startTop + " animation-duration: " + aniDuration);
+    document.querySelector(container).style.left = (startTop + "%");
+    document.querySelector(container).style.animationDuration = (aniDuration + "s");
+  }
+  else {
+    let startSide = Math.floor( (Math.random() * 80) + 45);
+    let aniDuration = Math.floor( (Math.random() * 23) + 3);
+    console.log("Style.top: " + startSide + " animation-duration: " + aniDuration);
+
+    document.querySelector(container).style.top = (startSide + "%");
+    document.querySelector(container).style.animationDuration = (aniDuration + "s");
+  }
+  return;
 }
+// // random animation 
+// function randomVirusAnimation(current){
+//   console.log("random animation");
+//   // console.log("random animation added");
+//   /*****  random container animation*/
+//   let i = Math.floor( (Math.random() * animation.length));
+//   currentAnimation[current] = animation[i];
+
+//   console.log("saved " + animation[i] + " in currentAnimation Object key: " + current);
+//   console.log(currentAnimation);
+
+//   return animation[i];
+// }
+
 // random CLICK ANIMATION
 function randomVirusClickAnimation(sprite, container, current){
   console.log("click random animations");

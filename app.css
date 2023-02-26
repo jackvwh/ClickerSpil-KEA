@@ -208,17 +208,33 @@ body {
   color: #ffffff;
 }
 
-
+/* new */
+.right {
+  animation-name: right;
+  animation-duration: 12s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  top: 50%;
+  left: 1%;
+}
+@keyframes right {
+from {
+  transform: translateX(-100%);
+}
+to {
+  transform: translateX(700%);
+}
+}
 /* Animations start positions and speed */
-.fastLeft1 {
-    animation-name: fastLeft1;
-    animation-duration: 12s;
+.left {
+    animation-name: left;
+    animation-duration: 12;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     top: 45%;  
     right: 1%;
 }
-@keyframes fastLeft1 {
+@keyframes left {
   from {
     transform: translateX(100%);
   }
@@ -226,262 +242,14 @@ body {
     transform: translateX(-800%);
   }
 }
-.fastLeft2 {
-    animation-name: fastLeft2;
-    animation-duration: 10s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    top: 57%;
-    right: 1%;
-}
-@keyframes fastLeft2 {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(-800%);
-  }
-}
-.fastLeft3 {
-    animation-name: fastLeft3;
-    animation-duration:10s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    top: 70%;
-    right: 1%;
-}
-@keyframes fastLeft3 {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(-800%);
-  }
-}
-.slowLeft1 {
-  animation-name: slowLeft1;
-  animation-duration: 17s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  top: 50%;
-  right: 1%;
-}
-@keyframes slowLeft1 {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(-800%);
-  }
-}
-.slowLeft2 {
-  animation-name: slowLeft2;
-  animation-duration: 17s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  top: 63%;
-  right: 1%;
-}
-@keyframes slowLeft2 {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(-800%);
-  }
-}
-.slowLeft3 {
-  animation-name: slowLeft3;
-  animation-duration: 17s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  top: 73%;
-  right: 1%;
-}
-@keyframes slowLeft3 {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(-800%);
-  }
-}
-.fastRight1 {
-    animation-name: fastRight1;
-    animation-duration: 12s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    top: 50%;
-    left: 1%;
-}
-@keyframes fastRight1 {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(700%);
-  }
-}
-.fastRight2 {
-    animation-name: fastRight2;
-    animation-duration: 12s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    top: 60%;
-    left: 1%;
-}
-@keyframes fastRight2 {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(700%);
-  }
-}
-.fastRight3 {
-    animation-name: fastRight3;
-    animation-duration: 12s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    top: 76%;
-    left: 1%;
-}
-@keyframes fastRight3 {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(700%);
-  }
-}
-.slowRight1 {
-    animation-name: slowRight1;
-    animation-duration: 19s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    top: 50%;
-}
-@keyframes slowRight1{
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(700%);
-  }
-}
-.slowRight2 {
-    animation-name: slowRight2;
-    animation-duration: 19s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    top: 65%;
-}
-@keyframes slowRight2 {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(700%);
-  }
-}
-.slowRight3 {
-    animation-name: slowRight3;
-    animation-duration: 19s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    top: 75%;
-}
-@keyframes slowRight3 {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(2000%);
-  }
-}
-.fastTop1 {
-    animation-name: fastTop1;
-    animation-duration: 11s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    left: 33%;
-}
-@keyframes fastTop1 {
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    transform: translateY(600%);
-  }
-}
-.fastTop2 {
-    animation-name: fastTop2;
-    animation-duration: 11s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    left: 40%;
-}
-@keyframes fastTop2 {
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    transform: translateY(600%);
-  }
-}
-.fastTop3 {
-    animation-name: fastTop3;
-    animation-duration: 11s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    left: 67%;
-}
-@keyframes fastTop3 {
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    transform: translateY(600%);
-  }
-}
-.slowTop1{
-    animation-name: slowTop1;
-    animation-duration: 19s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    left: 38%;
-}
-@keyframes slowTop1 {
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    transform: translateY(600%);
-  }
-}
-.slowTop2{
-    animation-name: slowTop2;
-    animation-duration: 19s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    left: 45%;
-  }
-@keyframes slowTop2 {
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    transform: translateY(600%);
-  }
-}
-.slowTop3{
-    animation-name: slowTop3;
+.top{
+    animation-name: top;
     animation-duration: 19s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     left: 65%;
 }
-@keyframes slowTop3 {
+@keyframes top {
   from {
     transform: translateY(-100%);
   }
