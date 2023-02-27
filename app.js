@@ -75,7 +75,7 @@ function start() {
     randomVirusAnimation(container.update3, update3);
 
     // Registrer click og kald vilkårlig animation til element og gem i object currentAnimation
-    virusCorona.addEventListener("click", function(){randomVirusClickAnimation(sprites.corona, container.corona, corona)});
+    virusCorona.addEventListener("click", function(){randomVirusClickAnimation(sprites[corona], container[corona], corona)});
     virusCorona2.addEventListener("click", function(){randomVirusClickAnimation(sprites.corona2, container.corona2, corona2)});
     virusBlue.addEventListener("click", function(){randomVirusClickAnimation(sprites.blue, container.blue, blue)});
     virusBlue2.addEventListener("click", function(){randomVirusClickAnimation(sprites.blue2, container.blue2, blue2)});
@@ -129,7 +129,7 @@ function randomVirusAnimation(container, current){
 function randomVirusClickAnimation(sprite, container, current){
   console.log("CLICK animation");
   // fjern click
-  document.querySelector(container).removeEventListener("click", function() {randomVirusClickAnimation(sprites.current, container.current, current)});
+  document.querySelector(container).removeEventListener("click", function() {randomVirusClickAnimation(sprites[current], container[current], current)});
   // Pause animation
   document.querySelector(container).classList.add("paused");
   /*****  random clickAnimation */

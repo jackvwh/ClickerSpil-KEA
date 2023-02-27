@@ -168,16 +168,26 @@ body {
 }
 #score{
   position: absolute;
-  top: 30px;
+  top: 40%;
   right: 12%;
   scale: 2;
 }
 #score_container img{
-  width: 35%;
+  width: 45%;
+  top: 5px;
 }
 
 #clock_container{
   text-align: center;
+}
+#clock_container img{
+  width: 45%;
+}
+#time{
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  scale: 1.5;
 }
 #health_container{
     display: grid;
@@ -260,7 +270,6 @@ to {
 #level_complete.hidden{
     display: none;    
 }
-
 .active_windows {
   filter: drop-shadow(0 0 2px yellow);
 }
@@ -301,7 +310,7 @@ to {
 
 .zoom_in {
     animation-name: zoom_in;
-    animation-duration: 4s;
+    animation-duration: 2s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     image-rendering: pixelated;
@@ -329,7 +338,6 @@ to {
         transform: rotate(720deg) scale(0);
     }
 }
-
 .beam {
   opacity: 1;
   animation-name: beam;
@@ -361,32 +369,6 @@ to {
       transform: rotateX(90deg);
   }
 }
-.tilt {
-  transform-origin: bottom left;
-  animation-name: tilt;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-}
-@keyframes tilt {
-  0% {
-      rotate: 0deg;
-  }
-  100% {
-      rotate: -30deg;
-  }
-}
-
-.untilt {
-  transform-origin: bottom left;
-  
-  animation-name: tilt;
-  animation-duration: 1s;
-  animation-iteration-count: 1;
-  animation-direction: reverse;
-  animation-fill-mode: backwards;
-}
-
 .fade_out {
   animation-name: fade_out;
   animation-duration: 1s;
@@ -459,6 +441,31 @@ to {
   100% {
       translate: 60vw;
   }
+}
+.tilt {
+  transform-origin: bottom left;
+  animation-name: tilt;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+@keyframes tilt {
+  0% {
+      rotate: 0deg;
+  }
+  100% {
+      rotate: -30deg;
+  }
+}
+
+.untilt {
+  transform-origin: bottom left;
+  
+  animation-name: tilt;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-direction: reverse;
+  animation-fill-mode: backwards;
 }
 
 
