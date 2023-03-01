@@ -11,10 +11,7 @@
 <body>
     <div id="screen">
         <div id="game">
-            <div id="game_background">
-                <!-- <img src="images/empty2.png" alt="desk"> -->
-            </div>
-
+            <div id="game_background"></div>
             <div id="game_elements">
                 <div id="virusCorona_container">
                     <img id="virusCorona_sprite" src="images/Pink_Virus_Corona.png" alt="CoronaVirus">
@@ -87,8 +84,10 @@
             </div>
         </div> 
 
-        <div id="start" class="hidden">
-            <img src="images/Start_BTN.png" alt="">
+        <div id="start">
+            <p>Kill 10 virusses before the time runs out</p>
+            <button id="btn_start" class="pulse">Start</button>
+            <!-- <img src="images/Start_BTN.png" alt=""> -->
         </div>
         <div id="game_over" class="hidden">
             <h2> GAME OVER </h2>
@@ -98,6 +97,11 @@
            <h2> <span>LEVEL COMPLETE </span></h2>
         </div>
     </div>
+
+    <!-- <audio src="images/"></audio> -->
+
+
+
     <script src="app.js"></script>
     <!-- <script src="app2.js"></script> -->
 </body>

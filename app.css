@@ -2,7 +2,16 @@ body {
     margin: 0;
     
 }
-
+button {
+  padding: 0.5em 1em;
+  font-size: 2em;
+  margin: auto;
+  background-color: #ffad01;
+  color: #fff4bf;
+  border: 10px solid #ffc72e;
+  cursor: pointer;
+  border-radius: 10px;
+}
 #screen {
     aspect-ratio: 16/9;
     display: grid;
@@ -41,7 +50,7 @@ body {
 /* positioning elements */
 #game_foreground {
   position: absolute;
-  z-index: 1;
+  z-index: 0;
   top: 36%;
   left: 25%;
 }
@@ -205,8 +214,16 @@ body {
   background-image: linear-gradient(150deg, #c90303 0%, #790909 100%);
   color: #ffffff;
 }
-
 #level_complete {
+  grid-area: 1 /1;
+  z-index: 999;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background-image: linear-gradient(150deg, #20c903 0%, #09793b 100%);
+  color: #ffffff;
+}
+#start {
   grid-area: 1 /1;
   z-index: 999;
   display: grid;
@@ -219,10 +236,8 @@ body {
 /* new */
 .right {
   animation-name: right;
-  animation-duration: 12s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  top: 50%;
   left: 1%;
 }
 @keyframes right {
@@ -236,10 +251,8 @@ to {
 /* Animations start positions and speed */
 .left {
     animation-name: left;
-    animation-duration: 12;
     animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    top: 45%;  
+    animation-iteration-count: infinite;  
     right: 1%;
 }
 @keyframes left {
@@ -252,7 +265,6 @@ to {
 }
 .top{
     animation-name: top;
-    animation-duration: 19s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     left: 65%;
@@ -266,7 +278,7 @@ to {
   }
 }
 
-.hidden, #game_over.hidden,
+.hidden, #start.hidden,  #game_over.hidden,
 #level_complete.hidden{
     display: none;    
 }
@@ -295,7 +307,7 @@ to {
 
 .zoom_out {
     animation-name: zoom_out;
-    animation-duration: 4s;
+    animation-duration: 2s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -379,7 +391,22 @@ to {
   0% {opacity: 1;}
   100% {opacity: 0;}
 }
+@keyframes pulse_kf {
+  0% {
+      transform: scale(0.8);
+  }
 
+  100% {
+      transform: scale(1);
+  }
+}
+.pulse {
+  animation-name: pulse_kf;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: alternate;
+}
 /* extra animation classes cpy/pste thx ;)*/
 .jump {
   animation-name: jump;
@@ -427,7 +454,6 @@ to {
       z-index: 1;
   }
 }
-
 .move {
   animation-name: move;
   animation-duration: 10s;
