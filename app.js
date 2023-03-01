@@ -2,10 +2,6 @@
 
 "use strict"
 
-const WON = 10;
-let points = 0;
-let lives = 3;
-
 // HTML element variables
 const virusCorona = document.querySelector("#virusCorona_container");
 const virusCorona2 = document.querySelector("#virusCorona2_container");
@@ -24,70 +20,82 @@ const virusUpdate = document.querySelector("#update_container");
 const virusUpdate2 = document.querySelector("#update2_container");
 const virusUpdate3 = document.querySelector("#update3_container");
 
+const WON = 10;
+let points = 0;
+let lives = 3;
+
 // Animations
 const animation = ["right", "left", "top"];
 const clickAnimation = ["falling", "zoom_out", "zoom_in", "spiral", "fallover", "fade_out", "beam", ];
-// empty object array for storing current animations
+// empty object arrays for storing current animations and click
 let currentAnimation = {};
-let currentClick = 0;
+let currentClick = {};
 
 window.addEventListener("load", start);
 
 function start() {
   console.log("APP.JS kører!");
-    // Start animationer
-    virusCorona.addEventListener("load",randomVirusAnimation);
-    virusCorona2.addEventListener("load", randomVirusAnimation);
-    virusBlue.addEventListener("load",randomVirusAnimation);
-    virusBlue2.addEventListener("load", randomVirusAnimation);
-    virusRed.addEventListener("load", randomVirusAnimation);
-    virusRed2.addEventListener("load", randomVirusAnimation);
-    virusGreen.addEventListener("load", randomVirusAnimation);
-    virusGreen2.addEventListener("load", randomVirusAnimation);
-    virusPink.addEventListener("load", randomVirusAnimation);
-    virusPink2.addEventListener("load", randomVirusAnimation);
-    virusYellow.addEventListener("load", randomVirusAnimation);
-    virusYellow2.addEventListener("load", randomVirusAnimation);
-    virusYellow3.addEventListener("load", randomVirusAnimation);
-    virusUpdate.addEventListener("load", randomVirusAnimation);
-    virusUpdate2.addEventListener("load", randomVirusAnimation);   
-    virusUpdate3.addEventListener("load", randomVirusAnimation);
-
-    // Registrer click og kald vilkårlig animation til element og gem i object currentAnimation
-    virusCorona.addEventListener("click",randomVirusClickAnimation);
-    virusCorona2.addEventListener("click", randomVirusClickAnimation);
-    virusBlue.addEventListener("click",randomVirusClickAnimation);
-    virusBlue2.addEventListener("click", randomVirusClickAnimation);
-    virusRed.addEventListener("click", randomVirusClickAnimation);
-    virusRed2.addEventListener("click", randomVirusClickAnimation);
-    virusGreen.addEventListener("click", randomVirusClickAnimation);
-    virusGreen2.addEventListener("click", randomVirusClickAnimation);
-    virusPink.addEventListener("click", randomVirusClickAnimation);
-    virusPink2.addEventListener("click", randomVirusClickAnimation);
-    virusYellow.addEventListener("click", randomVirusClickAnimation);
-    virusYellow2.addEventListener("click", randomVirusClickAnimation);
-    virusYellow3.addEventListener("click", randomVirusClickAnimation);
-    virusUpdate.addEventListener("click", randomVirusClickAnimation);
-    virusUpdate2.addEventListener("click", randomVirusClickAnimation);   
-    virusUpdate3.addEventListener("click", randomVirusClickAnimation);
-
-    // restart 
-    virusCorona.addEventListener("animationiteration",virusRestart);
-    virusCorona2.addEventListener("animationiteration", virusRestart);
-    virusBlue.addEventListener("animationiteration",virusRestart);
-    virusBlue2.addEventListener("animationiteration", virusRestart);
-    virusRed.addEventListener("animationiteration", virusRestart);
-    virusRed2.addEventListener("animationiteration", virusRestart);
-    virusGreen.addEventListener("animationiteration", virusRestart);
-    virusGreen2.addEventListener("animationiteration", virusRestart);
-    virusPink.addEventListener("animationiteration", virusRestart);
-    virusPink2.addEventListener("animationiteration", virusRestart);
-    virusYellow.addEventListener("animationiteration", virusRestart);
-    virusYellow2.addEventListener("animationiteration", virusRestart);
-    virusYellow3.addEventListener("animationiteration", virusRestart);
-    virusUpdate.addEventListener("animationiteration", virusRestart);
-    virusUpdate2.addEventListener("animationiteration", virusRestart);   
-    virusUpdate3.addEventListener("animationiteration", virusRestart);
+   startAnimationer();
+   eventListenerClick();
+  //  eventListenerIteration();
+}
+function startAnimationer(){
+  // Start animationer
+  randomVirusAnimation.call(virusCorona);
+  randomVirusAnimation.call(virusCorona2);
+  randomVirusAnimation.call(virusBlue);
+  randomVirusAnimation.call(virusBlue2);
+  randomVirusAnimation.call(virusRed);
+  randomVirusAnimation.call(virusRed2);
+  randomVirusAnimation.call(virusGreen);
+  randomVirusAnimation.call(virusGreen2);
+  randomVirusAnimation.call(virusPink);
+  randomVirusAnimation.call(virusPink2);
+  randomVirusAnimation.call(virusYellow);
+  randomVirusAnimation.call(virusYellow2);
+  randomVirusAnimation.call(virusYellow3);
+  randomVirusAnimation.call(virusUpdate);
+  randomVirusAnimation.call(virusUpdate2);
+  randomVirusAnimation.call(virusUpdate3);
+ 
+}
+function eventListenerClick(){
+  // Registrer click og kald vilkårlig animation til element og gem i object currentAnimation
+  virusCorona.addEventListener("click",randomVirusClickAnimation);
+  virusCorona2.addEventListener("click", randomVirusClickAnimation);
+  virusBlue.addEventListener("click",randomVirusClickAnimation);
+  virusBlue2.addEventListener("click", randomVirusClickAnimation);
+  virusRed.addEventListener("click", randomVirusClickAnimation);
+  virusRed2.addEventListener("click", randomVirusClickAnimation);
+  virusGreen.addEventListener("click", randomVirusClickAnimation);
+  virusGreen2.addEventListener("click", randomVirusClickAnimation);
+  virusPink.addEventListener("click", randomVirusClickAnimation);
+  virusPink2.addEventListener("click", randomVirusClickAnimation);
+  virusYellow.addEventListener("click", randomVirusClickAnimation);
+  virusYellow2.addEventListener("click", randomVirusClickAnimation);
+  virusYellow3.addEventListener("click", randomVirusClickAnimation);
+  virusUpdate.addEventListener("click", randomVirusClickAnimation);
+  virusUpdate2.addEventListener("click", randomVirusClickAnimation);   
+  virusUpdate3.addEventListener("click", randomVirusClickAnimation);
+}
+function eventListenerIteration(){
+  // restart 
+  virusCorona.addEventListener("animationiteration",virusRestart);
+  virusCorona2.addEventListener("animationiteration", virusRestart);
+  virusBlue.addEventListener("animationiteration",virusRestart);
+  virusBlue2.addEventListener("animationiteration", virusRestart);
+  virusRed.addEventListener("animationiteration", virusRestart);
+  virusRed2.addEventListener("animationiteration", virusRestart);
+  virusGreen.addEventListener("animationiteration", virusRestart);
+  virusGreen2.addEventListener("animationiteration", virusRestart);
+  virusPink.addEventListener("animationiteration", virusRestart);
+  virusPink2.addEventListener("animationiteration", virusRestart);
+  virusYellow.addEventListener("animationiteration", virusRestart);
+  virusYellow2.addEventListener("animationiteration", virusRestart);
+  virusYellow3.addEventListener("animationiteration", virusRestart);
+  virusUpdate.addEventListener("animationiteration", virusRestart);
+  virusUpdate2.addEventListener("animationiteration", virusRestart);   
+  virusUpdate3.addEventListener("animationiteration", virusRestart);
 }
 // random animation 
 function randomVirusAnimation(){
@@ -96,8 +104,8 @@ function randomVirusAnimation(){
   /*****  random container animation*/
   let i = Math.floor( (Math.random() * animation.length));
   container.classList.add(animation[i]);
-  currentAnimation[container] = animation[i];
-  console.log("saved " + animation[i] + " in currentAnimation Object key: " + container);
+  currentAnimation[container.id] = animation[i];
+  console.log("saved " + animation[i] + " in currentAnimation Object key: " + container.id);
   console.log(currentAnimation);
 
   // random start position and speed selecting
@@ -121,7 +129,6 @@ function randomVirusAnimation(){
     container.style.top = (startSide + "%");
     container.style.animationDuration = (aniDuration + "s");
   }
-  return;
 }
 // random CLICK ANIMATION
 function randomVirusClickAnimation(){
@@ -135,9 +142,9 @@ function randomVirusClickAnimation(){
   let i = Math.floor( (Math.random() * clickAnimation.length));
   // Adding CLICK animation to element
   container.querySelector("img").classList.add(clickAnimation[i]);
-  currentClick = i;
+  currentClick[container.id] = clickAnimation[i];
   console.log("Added CLICK animation: ", clickAnimation[i]);
-  
+  console.log(currentClick);
   container.addEventListener("animationend", virusRestart);
 
   // check for lives decrement 
@@ -148,7 +155,6 @@ function randomVirusClickAnimation(){
     incrementPoints();
   }
 }
-
 // // general function to all animation restarts
 function virusRestart() {
   console.log("virusRestart");
@@ -156,29 +162,29 @@ function virusRestart() {
   // fjern event der bringer os herind
   container.removeEventListener("animationend", virusRestart);
   // fjern CLICK animation
-  container.querySelector("img").classList.remove(clickAnimation[currentClick]);
-  console.log("remove Click animation->", clickAnimation[currentClick]);
+  container.querySelector("img").classList.remove(clickAnimation[container.id]);
+  console.log("remove Click animation->", clickAnimation[container.id]);
   // fjern pause  
   container.classList.remove("paused");
   console.log("remove paused animation");
   // remove animation
-  container.classList.remove(currentAnimation[container]);
+  container.classList.remove(currentAnimation[container.id]);
   // remove CSS attribute
   container.removeAttribute("style");
   // genstart animation
   container.classList.remove(currentAnimation[container]);
-  console.log("remove current class = " + currentAnimation[container] + " from " + container );
+  console.log("remove current class = " + currentAnimation[container.id] + " from " + container.id );
   // force reflow
   container.offsetWidth;
   console.log("Reflow element: " + container);
   // Add new animation
   randomVirusAnimation.call(this);
-  console.log("New random class added = ", currentAnimation[container] + " to " + container);
+  console.log("New random class added = ", currentAnimation[container.id] + " to " + container.id);
 
   // gør det muligt at klikke på container igen
-  container.addEventListener("click", randomVirusClickAnimation);
+  // container.addEventListener("click", randomVirusAnimation);
   
-  console.log("add eventListener again on:", container);
+  // console.log("add eventListener again on:", container);
 }
 function decrementLives(){
   console.log("decrementLives");
@@ -261,22 +267,40 @@ function end() {
     virusUpdate3.removeAttribute("style");
 
     // Fjern click 
-    virusCorona.removeEventListener("click", function(){randomVirusClickAnimation(sprites.corona, container.corona, corona)});
-    virusCorona2.removeEventListener("click", function(){randomVirusClickAnimation(sprites.corona2, container.corona2, corona2)});
-    virusBlue.removeEventListener("click", function(){randomVirusClickAnimation(sprites.blue, container.blue, blue)});
-    virusBlue2.removeEventListener("click", function(){randomVirusClickAnimation(sprites.blue2, container[blue2], blue2)});
-    virusRed.removeEventListener("click", function(){randomVirusClickAnimation(sprites[red], container[red], red)});
-    virusRed2.removeEventListener("click", function(){randomVirusClickAnimation(sprites[red2], container[red2], red2)});
-    virusGreen.removeEventListener("click", function(){randomVirusClickAnimation(sprites[green], container[green], green)});
-    virusGreen2.removeEventListener("click", function(){randomVirusClickAnimation(sprites[green2], container[green2], green2)});
-    virusPink.removeEventListener("click", function(){randomVirusClickAnimation(sprites[pink], container[pink], pink)});
-    virusPink2.removeEventListener("click", function(){randomVirusClickAnimation(sprites[pink2], container[pink2], pink2)});
-    virusYellow.removeEventListener("click", function(){randomVirusClickAnimation(sprites[yellow], container[yellow], yellow)});
-    virusYellow2.removeEventListener("click", function(){randomVirusClickAnimation(sprites[yellow2], container[yellow2], yellow2)});
-    virusYellow3.removeEventListener("click", function(){randomVirusClickAnimation(sprites[yellow3], container[yellow3], yellow3)});
-    virusUpdate.removeEventListener("click", function(){randomVirusClickAnimation(sprites[update], container[update], update)});
-    virusUpdate2.removeEventListener("click", function(){randomVirusClickAnimation(sprites[update2], container[update2], update2)});
-    virusUpdate3.removeEventListener("click", function(){randomVirusClickAnimation(sprites[update3], container[update3], update3)});
+    virusCorona.removeEventListener("click", randomVirusClickAnimation);
+    virusCorona2.removeEventListener("click", randomVirusClickAnimation);
+    virusBlue.removeEventListener("click", randomVirusClickAnimation);
+    virusBlue2.removeEventListener("click", randomVirusClickAnimation);
+    virusRed.removeEventListener("click", randomVirusClickAnimation);
+    virusRed2.removeEventListener("click", randomVirusClickAnimation);
+    virusGreen.removeEventListener("click", randomVirusClickAnimation);
+    virusGreen2.removeEventListener("click", randomVirusClickAnimation);
+    virusPink.removeEventListener("click", randomVirusClickAnimation);
+    virusPink2.removeEventListener("click", randomVirusClickAnimation);
+    virusYellow.removeEventListener("click", randomVirusClickAnimation);
+    virusYellow2.removeEventListener("click", randomVirusClickAnimation);
+    virusYellow3.removeEventListener("click", randomVirusClickAnimation);
+    virusUpdate.removeEventListener("click", randomVirusClickAnimation);
+    virusUpdate2.removeEventListener("click", randomVirusClickAnimation);
+    virusUpdate3.removeEventListener("click", randomVirusClickAnimation);
+
+    // restart 
+  virusCorona.removeEventListener("animationiteration",virusRestart);
+  virusCorona2.removeEventListener("animationiteration", virusRestart);
+  virusBlue.removeEventListener("animationiteration",virusRestart);
+  virusBlue2.removeEventListener("animationiteration", virusRestart);
+  virusRed.removeEventListener("animationiteration", virusRestart);
+  virusRed2.removeEventListener("animationiteration", virusRestart);
+  virusGreen.removeEventListener("animationiteration", virusRestart);
+  virusGreen2.removeEventListener("animationiteration", virusRestart);
+  virusPink.removeEventListener("animationiteration", virusRestart);
+  virusPink2.removeEventListener("animationiteration", virusRestart);
+  virusYellow.removeEventListener("animationiteration", virusRestart);
+  virusYellow2.removeEventListener("animationiteration", virusRestart);
+  virusYellow3.removeEventListener("animationiteration", virusRestart);
+  virusUpdate.removeEventListener("animationiteration", virusRestart);
+  virusUpdate2.removeEventListener("animationiteration", virusRestart);   
+  virusUpdate3.removeEventListener("animationiteration", virusRestart);
 }
 
 
