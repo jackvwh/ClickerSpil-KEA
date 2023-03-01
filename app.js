@@ -162,8 +162,8 @@ function virusRestart() {
   // fjern event der bringer os herind
   container.removeEventListener("animationend", virusRestart);
   // fjern CLICK animation
-  container.querySelector("img").classList.remove(clickAnimation[container.id]);
-  console.log("remove Click animation->", clickAnimation[container.id]);
+  container.querySelector("img").classList.remove(currentClick[container.id]);
+  console.log("remove Click animation->", currentClick[container.id]);
   // fjern pause  
   container.classList.remove("paused");
   console.log("remove paused animation");
@@ -172,7 +172,7 @@ function virusRestart() {
   // remove CSS attribute
   container.removeAttribute("style");
   // genstart animation
-  container.classList.remove(currentAnimation[container]);
+  container.classList.remove(currentAnimation[container.id]);
   console.log("remove current class = " + currentAnimation[container.id] + " from " + container.id );
   // force reflow
   container.offsetWidth;
@@ -182,9 +182,8 @@ function virusRestart() {
   console.log("New random class added = ", currentAnimation[container.id] + " to " + container.id);
 
   // gør det muligt at klikke på container igen
-  // container.addEventListener("click", randomVirusAnimation);
-  
-  // console.log("add eventListener again on:", container);
+  container.addEventListener("click", randomVirusAnimation);
+  console.log("add eventListener again on:", container.id);
 }
 function decrementLives(){
   console.log("decrementLives");
@@ -302,117 +301,3 @@ function end() {
   virusUpdate2.removeEventListener("animationiteration", virusRestart);   
   virusUpdate3.removeEventListener("animationiteration", virusRestart);
 }
-
-
-// function clickVirusCorona() {
-//     console.log("Click Virus corona");
-//     const virus = "#virusCorona_container";
-//     const virusSprite = "#virusCorona_sprite";
-//     const clickFunc = clickVirusCorona;
-//     // Forhindr gentagne clicks
-//     document.querySelector("#virusCorona_container").removeEventListener("click", clickVirusCorona);
-    
-//     // Stop coin container
-//     document.querySelector("#virusCorona_container").classList.add("paused");
-  
-//     // sæt forsvind-animation på coin
-//     document.querySelector("#virusCorona_sprite").classList.add("zoom_in");
-  
-//     // når forsvind-animation er færdig
-//     document.querySelector("#virusCorona_container").addEventListener("animationend", function() {virusGoneZoomIn(virus, virusSprite, clickFunc)});
-    
-//     incrementPoints();
-//   }
-//   function clickUpdate() {
-//     console.log("Click update");
-//     const virus = "#update_container";
-//     const virusSprite = "#update_sprite"
-//     const clickFunc = clickUpdate;
-//     // Forhindr gentagne clicks
-//     document.querySelector("#update_container").removeEventListener("click", clickUpdate);
-    
-//     // Stop coin container
-//     document.querySelector("#update_container").classList.add("paused");
-  
-//     // sæt forsvind-animation på coin
-//     document.querySelector("#update_sprite").classList.add("zoom_in");
-  
-//     // når forsvind-animation er færdig: updateGone
-//     // document.querySelector("#update_container").addEventListener("animationend", updateGone);
-//     document.querySelector("#update_container").addEventListener("animationend", function() {virusGoneZoomIn(virus, virusSprite, clickFunc)});
-    
-//     decrementLives() ;
-//   }
-
-//   function clickVirusBlue() {
-//     console.log("Click blue");
-//     const virus = "#virusBlue_container";
-//     const virusSprite = "#virusBlue_sprite"
-//     const clickFunc = clickVirusBlue;
-//     // Forhindr gentagne clicks
-//     document.querySelector("#virusBlue_container").removeEventListener("click", clickVirusBlue);
-    
-//     // Stop coin container
-//     document.querySelector("#virusBlue_container").classList.add("paused");
-  
-//     // sæt forsvind-animation på coin
-//     document.querySelector("#virusBlue_sprite").classList.add("zoom_in");
-  
-//     // når forsvind-animation er færdig: coinGone
-//     document.querySelector("#virusBlue_container").addEventListener("animationend", function() {virusGoneZoomIn(virus, virusSprite, clickFunc);});
-
-//     decrementLives();
-//   }
-  
-//   function virusGoneZoomIn(virus, virusSprite, clickFunc) {
-//     console.log("virusGoneZoomIn");
-//     // fjern event der bringer os herind
-//     document.querySelector(virus).removeEventListener("animationend", virusGoneZoomIn);
-//     // fjern forsvind-animation
-//     document.querySelector(virusSprite).classList.remove("zoom_in");
-//     // fjern pause  
-//     document.querySelector(virus).classList.remove("paused");
-//     // genstart fastLeft animation
-//     document.querySelector(virus).classList.remove("slowRight1");
-//     document.querySelector(virus).offsetWidth;
-//     document.querySelector(virus).classList.add("slowRight1");
-//     // gør det muligt at klikke på coin igen
-//     document.querySelector(virus).addEventListener("click", clickFunc);
-//   }
-
-  // function incrementLives(){
-  //   console.log("increment");
-  //   lives++;
-  //   console.log(lives);
-  //   displayDecrementWindows();
-  // }
-
-// Function to increment windows lives
-
-  // function displayIncrementwindows(){
-  //   console.log(points, lives)
-  //   console.log("displayIncrementHeart");
-  //   document.querySelector(`#health${lives}`).classList.remove("broken_windows");
-  //   document.querySelector(`#health${lives}`).classList.add("active_windows");
-  // }
-
-  // function virusGoneZoomOut() {
-  //   // fjern event der bringer os herind
-  //   document.querySelector("#virusCorona_container").removeEventListener("animationend", virusGoneZoomOut);
-  
-  //   // fjern forsvind-animation
-  //   document.querySelector("#virusCorona_sprite").classList.remove("zoom_out");
-    
-  //   // fjern pause
-  //   document.querySelector("#virusCorona_container").classList.remove("paused");
-  
-  //   // genstart fastLeft animation
-  //   document.querySelector("#virusCorona_container").classList.remove("fastLeft1");
-  //   document.querySelector("#virusCorona_container").offsetWidth;
-  //   document.querySelector("#virusCorona_container").classList.add("fastLeft1");
-  
-  //   // gør det muligt at klikke på coin igen
-  //   document.querySelector("#virusCorona_container").addEventListener("click", clickVirusCorona);  
-  // }
-
-  
