@@ -18,12 +18,12 @@ button {
     grid-area: 1 / 1;
     grid-template: 100% / 100%;    
 }
-@media screen and (max-width: 600px){
+/* @media screen and (max-width: 600px){
   #virusBlue_container img, #virusRed_container img, #virusCorona_container img, #virusGreen_container img, #game_foreground img {
     width: 50%;
     height: 50%;
   }
-}
+} */
 
 #game {
     grid-area: 1 / 1;   
@@ -50,7 +50,7 @@ button {
 /* positioning elements */
 #game_foreground {
   position: absolute;
-  z-index: 0;
+  /* z-index: 0; */
   top: 36%;
   left: 25%;
 }

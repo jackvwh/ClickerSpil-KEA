@@ -30,6 +30,7 @@ const elements = {
   virusUpdate2: document.querySelector("#update2_container"),
   virusUpdate3: document.querySelector("#update3_container"),
 }
+// sounds elements
 const sounds = {
   badSound1: document.querySelector("#badSound1"),
   badSound2: document.querySelector("#badSound2"),
@@ -37,11 +38,11 @@ const sounds = {
   goodSound1: document.querySelector("#goodSound1"),
   goodSound2: document.querySelector("#goodSound2"),
   startSound1: document.querySelector("#startSound1"),
-  startSound2: document.querySelector("#startSound2"),
-  // endSound1: document.querySelector("#endSound1"),
+  endSound1: document.querySelector("#endSound1"),
+  endSound2: document.querySelector("#endSound2"),
 }
 // Animations
-const animation = ["right", "left", "top"];
+const animation = ["right", "left", "top",];
 const clickAnimation = ["falling", "zoom_out", "zoom_in", "spiral", "fallover", "fade_out", "beam", ];
 // empty object arrays for storing current animations and current click animations
 let currentAnimation = {};
@@ -52,9 +53,20 @@ window.addEventListener("load", ready);
 function ready() {
   console.log("JavaScript ready!");
   document.querySelector("#btn_start").addEventListener("click", start);
+  document.querySelector("#btn_restart").addEventListener("click", start);
+  document.querySelector("#btn_goToStart").addEventListener("click", showStartScreen);
 }
 function start() {
   console.log("GAME STARTING!");
+  // show game screen and reset lives and points
+  resetLives();
+  resetPoints();
+  showGameScreen();
+  // play game sound
+  sounds.startSound1.play();
+  // reset lives and points 
+  points = 0;
+  lives = 3;
   // skjul startskærm
   document.querySelector("#start").classList.add("hidden");
 
@@ -158,7 +170,7 @@ function virusRestart() {
   container.addEventListener("click", randomVirusAnimation);
   console.log("add eventListener again on:", container.id);
 }
-// Add random duration and start position 
+// Add random duration and left position 
 function addRandomDurationAndLeft(){
   const container = this;
    // create random values for CSS properties
@@ -169,7 +181,7 @@ function addRandomDurationAndLeft(){
    container.style.left = (startTop + "%");
    container.style.animationDuration = (animationDuration + "s");
 }
-// Add random duration and start position 
+// Add random duration and top position 
 function addRandomDurationAndTop(){
   const container = this;
   // create random values for CSS attributes
@@ -239,27 +251,59 @@ function incrementPoints(){
 function displayPoints(){
   document.querySelector("#score").textContent = points;
 }
+function showStartScreen() {
+  // fjern hidden fra startskærm og tilføj til game over og level complete
+  document.querySelector("#start").classList.remove("hidden");
+  document.querySelector("#game_over").classList.add("hidden");
+  document.querySelector("#level_complete").classList.add("hidden");
+}
+function showGameScreen() {
+  // Skjul startskærm, game over og level complete
+  document.querySelector("#start").classList.add("hidden");
+  document.querySelector("#game_over").classList.add("hidden");
+  document.querySelector("#level_complete").classList.add("hidden");
+}
+function resetLives() {
+  // sæt lives til 3
+  lives = 3;
+  //nulstil visning af liv (hjerte vi ser)
+  document.querySelector("#health1").classList.remove("broken_window");
+  document.querySelector("#health2").classList.remove("broken_window");
+  document.querySelector("#health3").classList.remove("broken_window");
+  document.querySelector("#health1").classList.add("active_window");
+  document.querySelector("#health2").classList.add("active_window");
+  document.querySelector("#health3").classList.add("active_window");
+}
+function resetPoints() {
+  // nulstil point
+  points = 0;
+  // nulstil vising af point
+  displayPoints();
+}
 function gameOver(){
   console.log("GameOver");
   document.querySelector("#game_over").classList.remove("hidden");
   end();
+  sounds.startSound1.pause();
+  sounds.endSound1.play();
 } 
 function levelComplete(){
   console.log("levelComplete");
   document.querySelector("#level_complete").classList.remove("hidden");
   end();
+  //pause game sound and play end sound
+  sounds.startSound1.pause();
+  sounds.endSound2.play();
 }
 function end() {
   console.log("JavaScript SLUTTER!");
   for (let i in elements){
     // remove classes
-    elements[i].classList.remove(currentAnimation[elements[i].id]);
+    elements[i].classList.remove(currentAnimation[elements[i].id]);// <---- works?? 
      // remove style attributes
     elements[i].removeAttribute("style");
     // remove eventlisteners
     elements[i].removeEventListener("click", randomVirusClickAnimation);
     elements[i].removeEventListener("animationiteration",virusRestart);
   }
-  // Vis startskærm
-  document.querySelector("#start").classList.remove("hidden");
 }

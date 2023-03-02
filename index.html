@@ -66,24 +66,23 @@
                 <img id="game_foreground_sprite" src="images/Generic_Windows_XP_PC.png" alt="Old PC">
             </div>
 
-            <div id="game_ui">
-                <div id="clock_container">
-                    <span id="time">00:00</span>
-                    <img id="clock" src="images/scoreBoard.png" alt="timeBoard">
+                <div id="game_ui">
+                    <div id="clock_container">
+                        <span id="time">00:00</span>
+                        <img id="clock" src="images/scoreBoard.png" alt="timeBoard">
+                    </div>
+                    <div id="health_container">
+                        <img id="health1" src="images/windowsHealth.png" class="active_heart">
+                        <img id="health2" src="images/windowsHealth.png" class="active_heart">
+                        <img id="health3" src="images/windowsHealth.png" class="active_heart">
+                    </div>
+                    <div id="score_container">
+                        <span id="score">0</span></p> 
+                        <img src="images/scoreBoard.png" alt="scoreBoard">
+                    </div>
                 </div>
-                <div id="health_container">
-                    <img id="health1" src="images/windowsHealth.png" class="active_heart">
-                    <img id="health2" src="images/windowsHealth.png" class="active_heart">
-                    <img id="health3" src="images/windowsHealth.png" class="active_heart">
-
-                </div>
-                <div id="score_container">
-                    <span id="score">0</span></p> 
-                    <img src="images/scoreBoard.png" alt="scoreBoard">
-                </div>
-            </div>
-        </div> 
-
+            </div> 
+        </div>
         <div id="start">
             <p>Kill 10 virusses before the time runs out</p>
             <button id="btn_start" class="pulse">Start</button>
@@ -91,22 +90,24 @@
         </div>
         <div id="game_over" class="hidden">
             <h2> GAME OVER </h2>
+            <button id="btn_restart" class="pulse">Go to start</button>
             <img src="images/getty-virus-detected.png" alt=" VIRUS DETECTED!">
         </div>
         <div id="level_complete" class="hidden">
            <h2> <span>LEVEL COMPLETE </span></h2>
+           <button id="btn_goToStart" class="pulse">Go to start</button>
         </div>
+    
     </div>
-</div>
 
     <audio id="badSound1" src="sounds/bad/wrong-answer-126515.mp3"></audio>
-    <audio id="badSound2" src="sounds/bad/gameOver.mp3"></audio>
+    <audio id="badSound2" src="sounds/bad/error-2-126514.mp3"></audio>
     <audio id="badSound3" src="sounds/bad/ouch-116112.mp3"></audio>
     <audio id="goodSound1" src="sounds/good/livechat-129007.mp3"></audio>
     <audio id="goodSound2" src="sounds/good/message-notification-103496.mp3"></audio>
-    <audio id="startSound1" src="sounds/start/sos-morse-code_daniel-simion.mp3"></audio>
-    <audio id="startSound2" src="sounds/start/tada.mp3"></audio>
-    <!-- <audio id="startSound2" src="sounds/end/"></audio> -->
+    <audio id="startSound1" src="sounds/start/sos-morse-code_daniel-simion.mp3" loop></audio>
+    <audio id="endSound1" src="sounds/end/gameOver.mp3"></audio>
+    <audio id="endSound2" src="sounds/start/tada.mp3"></audio>
 
     <script src="app.js"></script>
 </body>
