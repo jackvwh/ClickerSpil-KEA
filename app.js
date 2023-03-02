@@ -1,14 +1,16 @@
 // git@github.com:jackvwh/ClickerSpil-kea.git
 
-/**********
- * 
+/**********  TASK TO DO ----
 game elements behind game foreground? unclickable on the right bc of it
 restart is being called after end() is run
 points and lives dont increments or decrements respectfully suddenly
 sometimes classes are not removed proberly
 *********/
-"use strict"
 
+"use strict"
+const WON = 10;
+let points = 0;
+let lives = 3;
 // HTML elements
 const elements = {
   virusCorona: document.querySelector("#virusCorona_container"),
@@ -28,10 +30,16 @@ const elements = {
   virusUpdate2: document.querySelector("#update2_container"),
   virusUpdate3: document.querySelector("#update3_container"),
 }
-const WON = 10;
-let points = 0;
-let lives = 3;
-
+const sounds = {
+  badSound1: document.querySelector("#badSound1"),
+  badSound2: document.querySelector("#badSound2"),
+  badSound3: document.querySelector("#badSound3"),
+  goodSound1: document.querySelector("#goodSound1"),
+  goodSound2: document.querySelector("#goodSound2"),
+  startSound1: document.querySelector("#startSound1"),
+  startSound2: document.querySelector("#startSound2"),
+  // endSound1: document.querySelector("#endSound1"),
+}
 // Animations
 const animation = ["right", "left", "top"];
 const clickAnimation = ["falling", "zoom_out", "zoom_in", "spiral", "fallover", "fade_out", "beam", ];
@@ -73,28 +81,6 @@ function eventListenerIteration(){
     elements[i].addEventListener("animationiteration",virusRestart);
   }
 }
-// Add random duration and start position 
-function addRandomDurationAndLeft(){
-  const container = this;
-   // create random values for CSS properties
-   let startTop = Math.floor((Math.random() * (70 - 30) + 30));
-   let animationDuration = Math.floor( (Math.random() * (23 - 2) + 2));
-   console.log("Style.left: " + startTop + " animation-duration: " + animationDuration);
-   // add random CSS properties to element 
-   container.style.left = (startTop + "%");
-   container.style.animationDuration = (animationDuration + "s");
-}
-// Add random duration and start position 
-function addRandomDurationAndTop(){
-  const container = this;
-  // create random values for CSS attributes
-  let startSide = Math.floor( (Math.random() * (60 - 35) + 35));
-  let animationDuration = Math.floor( (Math.random() * (23 - 2) + 2));
-  console.log("Style.top: " + startSide + " animation-duration: " + animationDuration);
-  // add/change CSS attributes
-  container.style.top = (startSide + "%");
-  container.style.animationDuration = (animationDuration + "s");
-}
 // random animation 
 function randomVirusAnimation(){
   console.log("Animation being ADDED");
@@ -121,7 +107,6 @@ function randomVirusAnimation(){
 function randomVirusClickAnimation(){
   console.log("CLICK animation");
   const container = this;
-  console.log(this)
   // fjern click
   container.removeEventListener("click", randomVirusClickAnimation);
   // Pause animation
@@ -141,8 +126,9 @@ function randomVirusClickAnimation(){
   else {
     incrementPoints();
   }
+  playSound.call(this);
 }
-// // general function to all animation restarts
+// general function to all animation restarts
 function virusRestart() {
   console.log("virusRestart");
   const container = this;
@@ -171,6 +157,59 @@ function virusRestart() {
   // gør det muligt at klikke på container igen
   container.addEventListener("click", randomVirusAnimation);
   console.log("add eventListener again on:", container.id);
+}
+// Add random duration and start position 
+function addRandomDurationAndLeft(){
+  const container = this;
+   // create random values for CSS properties
+   let startTop = Math.floor((Math.random() * (70 - 30) + 30));
+   let animationDuration = Math.floor( (Math.random() * (23 - 2) + 2));
+   console.log("Style.left: " + startTop + " animation-duration: " + animationDuration);
+   // add random CSS properties to element 
+   container.style.left = (startTop + "%");
+   container.style.animationDuration = (animationDuration + "s");
+}
+// Add random duration and start position 
+function addRandomDurationAndTop(){
+  const container = this;
+  // create random values for CSS attributes
+  let startSide = Math.floor( (Math.random() * (60 - 35) + 35));
+  let animationDuration = Math.floor( (Math.random() * (23 - 2) + 2));
+  console.log("Style.top: " + startSide + " animation-duration: " + animationDuration);
+  // add/change CSS attributes
+  container.style.top = (startSide + "%");
+  container.style.animationDuration = (animationDuration + "s");
+}
+function playSound(){
+  const container = this; 
+  switch (container){
+    case elements.virusCorona:
+    case elements.virusBlue:
+    case elements.virusRed:
+    case elements.virusGreen:
+    case elements.virusPink:
+    case elements.virusYellow:
+        sounds.goodSound1.play();
+        break;
+    case elements.virusCorona2:
+    case elements.virusBlue2:
+    case elements.virusRed2:
+    case elements.virusGreen2:
+    case elements.virusPink2:
+    case elements.virusYellow2:
+    case elements.virusYellow3:
+      sounds.goodSound2.play();
+      break;
+    case elements.virusUpdate:
+      sounds.badSound1.play();
+      break;
+    case elements.virusUpdate2:
+      sounds.badSound2.play();
+      break;
+    case elements.virusUpdate3:
+      sounds.badSound3.play();
+      break;
+  }
 }
 function decrementLives(){
   console.log("decrementLives");
@@ -204,7 +243,7 @@ function gameOver(){
   console.log("GameOver");
   document.querySelector("#game_over").classList.remove("hidden");
   end();
-}
+} 
 function levelComplete(){
   console.log("levelComplete");
   document.querySelector("#level_complete").classList.remove("hidden");
