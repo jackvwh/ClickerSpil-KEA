@@ -69,7 +69,7 @@ function start() {
 
   startAnimationer();
   eventListenerClick();
-  // eventListenerIteration();
+  eventListenerIteration();
 }
 function startAnimationer(){
   console.log("start animations");
@@ -124,6 +124,7 @@ function randomVirusClickAnimation(){
   let i = Math.floor( (Math.random() * clickAnimation.length));
   // Adding CLICK animation to element
   container.querySelector("img").classList.add(clickAnimation[i]);
+  // store click animation with container in currentClick obj array
   currentClick[container.id] = clickAnimation[i];
   console.log("Added CLICK animation: ", clickAnimation[i]);
   console.log(currentClick);
@@ -199,6 +200,7 @@ function playSound(){
     case elements.virusPink:
     case elements.virusYellow:
         sounds.goodSound1.play();
+        sounds.goodSound1.currentTime = 0;
         break;
     case elements.virusCorona2:
     case elements.virusBlue2:
@@ -208,15 +210,19 @@ function playSound(){
     case elements.virusYellow2:
     case elements.virusYellow3:
       sounds.goodSound2.play();
+      sounds.goodSound2.currentTime = 0;
       break;
     case elements.virusUpdate:
       sounds.badSound1.play();
+      sounds.badSound1.currentTime = 0;
       break;
     case elements.virusUpdate2:
       sounds.badSound2.play();
+      sounds.badSound2.currentTime = 0;
       break;
     case elements.virusUpdate3:
       sounds.badSound3.play();
+      sounds.badSound1.currentTime = 0;
       break;
   }
 }
