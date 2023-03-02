@@ -3,8 +3,8 @@
 /**********  TASK TO DO ----
 game elements behind game foreground? unclickable on the right bc of it
 restart is being called after end() is run
-points and lives dont increments or decrements respectfully suddenly
-sometimes classes are not removed proberly
+points and lives dont increments or decrements respectfully suddenly?? very strange
+sometimes classes are not removed proberly, proberly connected/reason to the points/lives problem 
 *********/
 
 "use strict"
