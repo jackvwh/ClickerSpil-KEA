@@ -64,9 +64,6 @@ function start() {
   showGameScreen();
   // play game sound
   sounds.startSound1.play();
-  // reset lives and points 
-  points = 0;
-  lives = 3;
   // skjul startskærm
   document.querySelector("#start").classList.add("hidden");
 
