@@ -18,19 +18,11 @@ button {
     grid-area: 1 / 1;
     grid-template: 100% / 100%;    
 }
-/* @media screen and (max-width: 600px){
-  #virusBlue_container img, #virusRed_container img, #virusCorona_container img, #virusGreen_container img, #game_foreground img {
-    width: 50%;
-    height: 50%;
-  }
-} */
-
 #game {
     grid-area: 1 / 1;   
     display: grid;
     grid-template: 100% / 100%;
 }
-
 #game_background {
     display: grid;
     grid-area: 1 /1;
@@ -53,6 +45,7 @@ button {
   /* z-index: 0; */
   top: 36%;
   left: 25%;
+  pointer-events: none;
 }
 #game_foreground img{
   width: 100%;
@@ -163,7 +156,7 @@ button {
 }
 #game_ui{
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 2fr 1fr;
     align-items: center;
     position: absolute;
     background-color: aqua;
@@ -173,37 +166,59 @@ button {
     width: 40%;
 }
 #score_container{
-  text-align: center;
+  position: relative;
+  left: 40%;
 }
 #score{
   position: absolute;
   top: 40%;
-  right: 12%;
+  right: 82%;
   scale: 2;
 }
 #score_container img{
-  width: 45%;
-  top: 5px;
+  width: 35%;
 }
-
-#clock_container{
-  text-align: center;
-}
-#clock_container img{
-  width: 45%;
-}
-#time{
+#time_container {
   position: absolute;
-  top: 40%;
-  left: 10%;
-  scale: 1.5;
+  width: 9%;
+  aspect-ratio: 1/1;
+  top: 1%;
+  left: 47%;
+}
+#urskive {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(images/urskive.svg);
+  background-size: cover;
+}
+#minut_viser {
+  position: absolute;
+  top: 5%;
+  left: 49%;
+  width: 3%;
+  height: 45%;
+  border-radius: 50%;
+  transform-origin: bottom center;
+  background-color: black;
+}
+#time_viser {
+  position: absolute;
+  top: 20%;
+  left: 49%;
+  width: 3%;
+  height: 30%;
+  border-radius: 50%;
+  transform-origin: bottom center;
+  background-color: red;
+  rotate: 30deg;
 }
 #health_container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
 #health_container img{
-    width: 60%;
+    width: 50%;
 }
 #game_over {
   grid-area: 1 /1;
@@ -406,6 +421,31 @@ to {
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   animation-direction: alternate;
+}
+.minut_animation {
+  animation-name: min_kf;
+  animation-duration: 5s;
+  animation-fill-mode: both;
+  animation-timing-function: linear;
+}
+
+@keyframes min_kf {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.time_animation {
+  animation-name: time_kf;
+  animation-duration: 5s;
+  animation-fill-mode: both;
+  animation-timing-function: linear;
+}
+
+@keyframes time_kf {
+  to {
+    rotate: 60deg;
+  }
 }
 /* extra animation classes cpy/pste thx ;)*/
 .jump {
