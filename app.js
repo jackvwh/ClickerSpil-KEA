@@ -70,7 +70,7 @@ function start() {
   // Game elements ACTIVATE! 
   startAnimationer();
   eventListenerClick();
-  // eventListenerIteration();
+  eventListenerIteration();
   // play game sound
   sounds.startSound1.play();
 }
@@ -244,9 +244,9 @@ function incrementPoints(){
   points++;
   displayPoints();
   console.log("Points= " + points + " Lives= " + lives);
-  if (points === WON){
-    levelComplete();
-  }
+  // if (points === WON){
+  //   levelComplete();
+  // }
 }
 function displayPoints(){
   document.querySelector("#score").textContent = points;
@@ -301,14 +301,13 @@ function startTimer() {
      document.querySelector("#minut_viser").classList.add("minut_animation");
      document.querySelector("#time_viser").classList.add("time_animation");
    
-     document.querySelector("#minut_viser").addEventListener("animationend", end);
+     document.querySelector("#minut_viser").addEventListener("animationend", timeIsUp);
 
 }
-
 function timeIsUp() {
   console.log("Tiden er gået!");
 
-  if (points >= 10) {
+  if (points >= WON) {
       levelComplete();
   } else {
       gameOver();

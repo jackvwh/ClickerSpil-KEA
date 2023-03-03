@@ -424,29 +424,33 @@ to {
 }
 .minut_animation {
   animation-name: min_kf;
-  animation-duration: 5s;
+  animation-duration: 15s;
   animation-fill-mode: both;
   animation-timing-function: linear;
 }
-
 @keyframes min_kf {
   to {
     rotate: 360deg;
   }
 }
-
 .time_animation {
   animation-name: time_kf;
-  animation-duration: 5s;
+  animation-duration: 15s;
   animation-fill-mode: both;
   animation-timing-function: linear;
 }
-
 @keyframes time_kf {
   to {
     rotate: 60deg;
   }
 }
+
+
+
+
+
+
+
 /* extra animation classes cpy/pste thx ;)*/
 .jump {
   animation-name: jump;
@@ -454,7 +458,6 @@ to {
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
-
 .jump-once {
   animation-name: jump;
   animation-duration: .3s;
@@ -469,7 +472,6 @@ to {
       translate: 0 -50%;
   }
 }
-
 .move-around {
   animation-name: move-around;
   animation-duration: 2s;
@@ -523,7 +525,6 @@ to {
       rotate: -30deg;
   }
 }
-
 .untilt {
   transform-origin: bottom left;
   
