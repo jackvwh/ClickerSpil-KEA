@@ -1,18 +1,9 @@
-// git@github.com:jackvwh/ClickerSpil-kea.git
-
-/**********  TASK TO DO ----
-game elements behind game foreground? unclickable on the right bc of it
-restart is being called after end() is run
-points and lives dont increments or decrements respectfully suddenly?? very strange
-sometimes classes are not removed proberly, proberly connected/reason to the points/lives problem 
-*********/
-
 "use strict"
 const WON = 10;
 let points = 0;
 let lives = 3;
 let isGameRunning = false;
-// HTML elements
+
 const elements = {
   virusCorona: document.querySelector("#virusCorona_container"),
   virusCorona2: document.querySelector("#virusCorona2_container"),
@@ -31,7 +22,6 @@ const elements = {
   virusUpdate2: document.querySelector("#update2_container"),
   virusUpdate3: document.querySelector("#update3_container"),
 }
-// sounds elements
 const sounds = {
   badSound1: document.querySelector("#badSound1"),
   badSound2: document.querySelector("#badSound2"),
@@ -64,9 +54,8 @@ function start() {
   resetLives();
   resetPoints();
   showGameScreen();
-
   // start timer
-    startTimer();
+  startTimer();
   // Game elements ACTIVATE! 
   startAnimationer();
   eventListenerClick();
@@ -78,28 +67,28 @@ function startAnimationer(){
   console.log("start animations");
   // Start animationer
   for (let i in elements){
-    randomVirusAnimation.call(elements[i]);
+    randomAnimation.call(elements[i]);
   }
 }
 function eventListenerClick(){
   // Registrer click
   for (let i in elements){
-    elements[i].addEventListener("click",randomVirusClickAnimation);
+    elements[i].addEventListener("click",randomClick);
   }
 }
 function eventListenerIteration(){
   // restart position after each iteration 
   for (let i in elements){
-    elements[i].addEventListener("animationiteration",virusRestart);
+    elements[i].addEventListener("animationiteration",restart);
   }
 }
-// random animation 
-function randomVirusAnimation(){
+function randomAnimation(){
   console.log("Animation being ADDED");
   const container = this;
   /*****  random container animation*/
   let i = Math.floor( (Math.random() * animation.length));
   container.classList.add(animation[i]);
+  // save animation with element in currentAnimation:{}
   currentAnimation[container.id] = animation[i];
   console.log("saved " + animation[i] + " in currentAnimation Object key: " + container.id);
   console.log(currentAnimation);
@@ -112,12 +101,11 @@ function randomVirusAnimation(){
       addRandomDurationAndTop.call(this);
   }
 }
-// random CLICK ANIMATION
-function randomVirusClickAnimation(){
+function randomClick(){
   console.log("CLICK animation");
   const container = this;
   // fjern click
-  container.removeEventListener("click", randomVirusClickAnimation);
+  container.removeEventListener("click", randomClick);
   // Pause animation
   container.classList.add("paused");
   /*****  random clickAnimation */
@@ -127,7 +115,7 @@ function randomVirusClickAnimation(){
   // store click animation with container in currentClick obj array
   currentClick[container.id] = clickAnimation[i];
   console.log("Added CLICK animation: ", clickAnimation[i]);
-  container.addEventListener("animationend", virusRestart);
+  container.addEventListener("animationend", restart);
   // check for lives decrement or points increment
   if (container === elements.virusUpdate|| container === elements.virusUpdate2 || container === elements.virusUpdate3){
     decrementLives();
@@ -137,12 +125,11 @@ function randomVirusClickAnimation(){
   }
   playSound.call(this);
 }
-// general function to all animation restarts
-function virusRestart() {
+function restart() {
   console.log("virusRestart");
   const container = this;
   // fjern event der bringer os herind
-  container.removeEventListener("animationend", virusRestart);
+  container.removeEventListener("animationend", restart);
   // fjern CLICK animation
   container.querySelector("img").classList.remove(currentClick[container.id]);
   console.log("remove Click animation->", currentClick[container.id]);
@@ -159,10 +146,10 @@ function virusRestart() {
   // force reflow
   container.offsetWidth;
   // Add new animation
-  randomVirusAnimation.call(this);
+  randomAnimation.call(this);
   console.log("New random class added = ", currentAnimation[container.id] + " to " + container.id);
   // gør det muligt at klikke på container igen
-  container.addEventListener("click", randomVirusAnimation);
+  container.addEventListener("click", randomClick);
 }
 // Add random duration and left position 
 function addRandomDurationAndLeft(){
@@ -295,14 +282,11 @@ function levelComplete(){
   sounds.startSound1.pause();
   sounds.endSound2.play();
 }
-// timer function 
 function startTimer() {
      //Starter timeren (ur-animationen)
      document.querySelector("#minut_viser").classList.add("minut_animation");
      document.querySelector("#time_viser").classList.add("time_animation");
-   
      document.querySelector("#minut_viser").addEventListener("animationend", timeIsUp);
-
 }
 function timeIsUp() {
   console.log("Tiden er gået!");
@@ -318,11 +302,13 @@ function end() {
   isGameRunning = false;
   for (let i in elements){
     // remove classes
-    elements[i].classList.remove(currentAnimation[elements[i].id]);// <---- works?? 
+    elements[i].classList.remove(currentAnimation[elements[i].id]);
      // remove style attributes
     elements[i].removeAttribute("style");
     // remove eventlisteners
-    elements[i].removeEventListener("click", randomVirusClickAnimation);
-    elements[i].removeEventListener("animationiteration",virusRestart);
+    elements[i].removeEventListener("click", randomClick);
+    elements[i].removeEventListener("animationiteration",restart);
   }
+  sounds.startSound1.pause();
+
 }
