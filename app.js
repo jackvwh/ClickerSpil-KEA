@@ -53,6 +53,7 @@ function start() {
   // show game screen and reset lives and points
   resetLives();
   resetPoints();
+  resetTimer();
   showGameScreen();
   // start timer
   startTimer();
@@ -238,6 +239,21 @@ function incrementPoints(){
 function displayPoints(){
   document.querySelector("#score").textContent = points;
 }
+function startTimer() {
+  //Starter timeren (ur-animationen)
+  document.querySelector("#minut_viser").classList.add("minut_animation");
+  document.querySelector("#time_viser").classList.add("time_animation");
+  document.querySelector("#minut_viser").addEventListener("animationend", timeIsUp);
+}
+function timeIsUp() {
+console.log("Tiden er gået!");
+
+if (points >= WON) {
+   levelComplete();
+} else {
+   gameOver();
+}
+}
 function showStartScreen() {
   // fjern hidden fra startskærm og tilføj til game over og level complete
   document.querySelector("#start").classList.remove("hidden");
@@ -267,6 +283,11 @@ function resetPoints() {
   // nulstil vising af point
   displayPoints();
 }
+function resetTimer(){
+  document.querySelector("#minut_viser").classList.remove("minut_animation");
+  document.querySelector("#time_viser").classList.remove("time_animation");
+  document.querySelector("#time_container").offsetWidth;
+}
 function gameOver(){
   console.log("GameOver");
   document.querySelector("#game_over").classList.remove("hidden");
@@ -282,21 +303,6 @@ function levelComplete(){
   sounds.startSound1.pause();
   sounds.endSound2.play();
 }
-function startTimer() {
-     //Starter timeren (ur-animationen)
-     document.querySelector("#minut_viser").classList.add("minut_animation");
-     document.querySelector("#time_viser").classList.add("time_animation");
-     document.querySelector("#minut_viser").addEventListener("animationend", timeIsUp);
-}
-function timeIsUp() {
-  console.log("Tiden er gået!");
-
-  if (points >= WON) {
-      levelComplete();
-  } else {
-      gameOver();
-  }
-}
 function end() {
   console.log("JavaScript SLUTTER!");
   isGameRunning = false;
@@ -309,6 +315,4 @@ function end() {
     elements[i].removeEventListener("click", randomClick);
     elements[i].removeEventListener("animationiteration",restart);
   }
-  sounds.startSound1.pause();
-
 }
