@@ -76,7 +76,7 @@
                         <img id="health3" src="images/windowsHealth.png" class="active_heart">
                     </div>
                     <div id="score_container">
-                        <span id="score">0</span></p> 
+                        <p><span id="score">0</span></p> 
                         <img src="images/scoreBoard.png" alt="scoreBoard">
                     </div>
                 </div>
@@ -84,17 +84,25 @@
         </div>
         <div id="start">
             <h1>VIRUS ATTACK</h1>
-            <p>Kill 10 or more virusses before the time runs out</p>
+            <br>
+            <h3> Hello number <span id="helloNumber">4672</span></h3>
+            <h2>Kill 5 virusses to MUTE the ALARM </h2> 
+            <br>
+            <h2>Kill 10 or more virusses to NOT get FIRED</h2>
             <button id="btn_start" class="pulse">Start</button>
         </div>
         <div id="game_over" class="hidden">
             <h2> GAME OVER </h2>
-            <button id="btn_restart" class="pulse">Restart</button>
+            <br>
+            <h2>You`re FIRED ! </h2>
+            <button id="btn_restart" class="pulse">PLEASE TAKE ME BACK. I LOVE YOU</button>
             <img src="images/getty-virus-detected.png" alt=" VIRUS DETECTED!">
         </div>
         <div id="level_complete" class="hidden">
            <h2> <span>LEVEL COMPLETE </span></h2>
-           <button id="btn_goToStart" class="pulse">Go to start</button>
+           <h3> See you tomorrow Kevin !</h3>
+           <button id="btn_endLife" class="pulse" onclick="document.location.href='https://www.youtube.com/watch?v=dQw4w9WgXcQ';">End your life?</button>
+           <button id="btn_goToStart" class="pulse">Back in the wheel</button>
         </div>
     
     </div>

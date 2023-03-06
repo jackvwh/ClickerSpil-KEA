@@ -1,5 +1,6 @@
 "use strict"
 const WON = 10;
+const MUTE = 5;
 let points = 0;
 let lives = 3;
 let isGameRunning = false;
@@ -46,6 +47,8 @@ function ready() {
   document.querySelector("#btn_start").addEventListener("click", start);
   document.querySelector("#btn_restart").addEventListener("click", start);
   document.querySelector("#btn_goToStart").addEventListener("click", showStartScreen);
+  document.querySelector("#btn_endLife").addEventListener("click", url);
+  helloNumber();
 }
 function start() {
   console.log("GAME STARTING!");
@@ -158,22 +161,26 @@ function restart() {
 function addRandomDurationAndLeft(){
   const container = this;
    // create random values for CSS properties
-   let startTop = Math.floor((Math.random() * (70 - 30) + 30));
+   let startTop = Math.floor((Math.random() * (80 - 20) + 20));
    let animationDuration = Math.floor( (Math.random() * (23 - 2) + 2));
+   let scale = Math.random() * (2 - 0.3) + 0.3;
    console.log("Style.left: " + startTop + " animation-duration: " + animationDuration);
    // add random CSS properties to element 
    container.style.left = (startTop + "%");
+   container.style.scale = (scale);
    container.style.animationDuration = (animationDuration + "s");
 }
 // Add random duration and top position 
 function addRandomDurationAndTop(){
   const container = this;
   // create random values for CSS attributes
-  let startSide = Math.floor( (Math.random() * (60 - 35) + 35));
+  let startSide = Math.floor( (Math.random() * (80 - 20) + 20));
   let animationDuration = Math.floor( (Math.random() * (23 - 2) + 2));
+  let scale = Math.random() * (2 - 0.3) + 0.3;
   console.log("Style.top: " + startSide + " animation-duration: " + animationDuration);
   // add/change CSS attributes
   container.style.top = (startSide + "%");
+  container.style.scale = (scale);
   container.style.animationDuration = (animationDuration + "s");
 }
 function playSound(){
@@ -208,7 +215,7 @@ function playSound(){
       break;
     case elements.virusUpdate3:
       sounds.badSound3.play();
-      sounds.badSound1.currentTime = 0;
+      sounds.badSound3.currentTime = 0;
       break;
   }
 }
@@ -230,10 +237,16 @@ function incrementPoints(){
   console.log("incrementPoints");
   points++;
   displayPoints();
-  console.log("Points= " + points + " Lives= " + lives);
+  if (points === MUTE){
+    sounds.startSound1.pause();
+  }
 }
 function displayPoints(){
   document.querySelector("#score").textContent = points;
+}
+function helloNumber(){
+  const hello = Math.floor(Math.random() * (5000 - 1000) + 1000)
+  document.querySelector("#helloNumber").textContent = hello;
 }
 function startTimer() {
   //Starter timeren (ur-animationen)
@@ -255,6 +268,7 @@ function showStartScreen() {
   document.querySelector("#start").classList.remove("hidden");
   document.querySelector("#game_over").classList.add("hidden");
   document.querySelector("#level_complete").classList.add("hidden");
+  helloNumber();
 }
 function showGameScreen() {
   // Skjul startskærm, game over og level complete

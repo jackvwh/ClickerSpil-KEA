@@ -347,7 +347,7 @@ to {
         transform: scale(1);
     }    
     100% {
-        transform: scale(10);
+        transform: scale(6);
     }
 }
 .spiral {
@@ -368,7 +368,7 @@ to {
 .beam {
   opacity: 1;
   animation-name: beam;
-  animation-duration: 2s;
+  animation-duration: 4s;
   animation-iteration-count: 1;
   animation-timing-function: ease-in;
 }
@@ -384,7 +384,7 @@ to {
 .fallover {
   transform-origin: bottom center;
   animation-name: fallover;
-  animation-duration: 2s;
+  animation-duration: 3s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
@@ -398,7 +398,7 @@ to {
 }
 .fade_out {
   animation-name: fade_out;
-  animation-duration: 1s;
+  animation-duration: 3s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
@@ -444,12 +444,6 @@ to {
     rotate: 60deg;
   }
 }
-
-
-
-
-
-
 
 /* extra animation classes cpy/pste thx ;)*/
 .jump {
