@@ -22,6 +22,9 @@ const elements = {
   virusUpdate: document.querySelector("#update_container"),
   virusUpdate2: document.querySelector("#update2_container"),
   virusUpdate3: document.querySelector("#update3_container"),
+  virusUpdate4: document.querySelector("#update4_container"),
+  virusUpdate5: document.querySelector("#update5_container"),
+  virusUpdate6: document.querySelector("#update6_container"),
 }
 const sounds = {
   badSound1: document.querySelector("#badSound1"),
@@ -206,14 +209,17 @@ function playSound(){
       sounds.goodSound2.currentTime = 0;
       break;
     case elements.virusUpdate:
+    case elements.virusUpdate6:
       sounds.badSound1.play();
       sounds.badSound1.currentTime = 0;
       break;
     case elements.virusUpdate2:
+    case elements.virusUpdate5:
       sounds.badSound2.play();
       sounds.badSound2.currentTime = 0;
       break;
     case elements.virusUpdate3:
+    case elements.virusUpdate4:
       sounds.badSound3.play();
       sounds.badSound3.currentTime = 0;
       break;

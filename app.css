@@ -154,6 +154,26 @@ button {
 #update3_sprite {
     width: 100%;
 }
+#update4_container {
+    position: absolute;
+}
+#update4_sprite {
+    width: 100%;
+}
+#update5_container {
+    position: absolute;
+    scale: 1.5;
+}
+#update5_sprite {
+    width: 100%;
+}
+#update6_container {
+    position: absolute;
+    scale: 1.5;
+}
+#update6_sprite {
+    width: 100%;
+}
 #game_ui{
     display: grid;
     grid-template-columns: 2fr 1fr;
