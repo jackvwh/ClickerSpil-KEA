@@ -1,6 +1,6 @@
 "use strict"
 const WON = 10;
-const MUTE = 5;
+let MUTE = 5;
 let points = 0;
 let lives = 3;
 let isGameRunning = false;
@@ -48,6 +48,7 @@ function ready() {
   document.querySelector("#btn_restart").addEventListener("click", start);
   document.querySelector("#btn_goToStart").addEventListener("click", showStartScreen);
   helloNumber();
+  muteNumber();
 }
 function start() {
   console.log("GAME STARTING!");
@@ -244,8 +245,13 @@ function displayPoints(){
   document.querySelector("#score").textContent = points;
 }
 function helloNumber(){
-  const hello = Math.floor(Math.random() * (5000 - 1000) + 1000)
+  const hello = Math.floor(Math.random() * (5000 - 1000) + 1000);
   document.querySelector("#helloNumber").textContent = hello;
+}
+function muteNumber(){
+  let mute = Math.floor(Math.random() * (5 - 2) + 2);
+  MUTE = mute;
+  console.log(MUTE);
 }
 function startTimer() {
   //Starter timeren (ur-animationen)
@@ -267,7 +273,6 @@ function showStartScreen() {
   document.querySelector("#start").classList.remove("hidden");
   document.querySelector("#game_over").classList.add("hidden");
   document.querySelector("#level_complete").classList.add("hidden");
-  helloNumber();
 }
 function showGameScreen() {
   // Skjul startskærm, game over og level complete
