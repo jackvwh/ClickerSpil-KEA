@@ -47,7 +47,6 @@ function ready() {
   document.querySelector("#btn_start").addEventListener("click", start);
   document.querySelector("#btn_restart").addEventListener("click", start);
   document.querySelector("#btn_goToStart").addEventListener("click", showStartScreen);
-  document.querySelector("#btn_endLife").addEventListener("click", url);
   helloNumber();
 }
 function start() {
