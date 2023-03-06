@@ -50,7 +50,7 @@ function ready() {
 function start() {
   console.log("GAME STARTING!");
   isGameRunning = true; 
-  // show game screen and reset lives and points
+  // reset everything before game start
   resetLives();
   resetPoints();
   resetTimer();
@@ -75,7 +75,7 @@ function eventListenerClick(){
   // Registrer click
   for (let i in elements){
     elements[i].addEventListener("click",randomClick);
-  }
+  }CountQueuingStrategy
 }
 function eventListenerIteration(){
   // restart position after each iteration 
@@ -127,7 +127,7 @@ function randomClick(){
   playSound.call(this);
 }
 function restart() {
-  console.log("virusRestart");
+  console.log("restart");
   const container = this;
   // fjern event der bringer os herind
   container.removeEventListener("animationend", restart);
@@ -146,8 +146,10 @@ function restart() {
   console.log("remove current class = " + currentAnimation[container.id] + " from " + container.id );
   // force reflow
   container.offsetWidth;
-  // Add new animation
-  randomAnimation.call(this);
+  if (isGameRunning){
+      // Add new animation
+      randomAnimation.call(this);
+    }
   console.log("New random class added = ", currentAnimation[container.id] + " to " + container.id);
   // gør det muligt at klikke på container igen
   container.addEventListener("click", randomClick);
@@ -212,14 +214,11 @@ function playSound(){
 }
 function decrementLives(){
   console.log("decrementLives");
-  console.log("Lives is -->", lives);
   displayDecrementWindows();
   lives--;
-  
-  console.log("Lives is now --->", lives);
-  if ( lives === 0){
-    gameOver();
-  }
+    if ( lives === 0){
+      gameOver();
+    }
 }
 function displayDecrementWindows(){
   console.log("displayDecrementWindows");
@@ -232,9 +231,6 @@ function incrementPoints(){
   points++;
   displayPoints();
   console.log("Points= " + points + " Lives= " + lives);
-  // if (points === WON){
-  //   levelComplete();
-  // }
 }
 function displayPoints(){
   document.querySelector("#score").textContent = points;
@@ -278,9 +274,7 @@ function resetLives() {
   document.querySelector("#health3").classList.add("active_windows");
 }
 function resetPoints() {
-  // nulstil point
   points = 0;
-  // nulstil vising af point
   displayPoints();
 }
 function resetTimer(){
