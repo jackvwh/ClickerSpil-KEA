@@ -32,6 +32,7 @@ const sounds = {
   badSound3: document.querySelector("#badSound3"),
   goodSound1: document.querySelector("#goodSound1"),
   goodSound2: document.querySelector("#goodSound2"),
+  goodSound3: document.querySelector("#goodSound3"),
   startSound1: document.querySelector("#startSound1"),
   endSound1: document.querySelector("#endSound1"),
   endSound2: document.querySelector("#endSound2"),
@@ -124,13 +125,20 @@ function randomClick(){
   console.log("Added CLICK animation: ", clickAnimation[i]);
   container.addEventListener("animationend", restart);
   // check for lives decrement or points increment
-  if (container === elements.virusUpdate|| container === elements.virusUpdate2 || container === elements.virusUpdate3){
+  if (container === elements.virusUpdate || 
+      container === elements.virusUpdate2 || 
+      container === elements.virusUpdate3 || 
+      container === elements.virusUpdate4 || 
+      container === elements.virusUpdate5 || 
+      container === elements.virusUpdate6 )
+  {
     decrementLives();
-  } 
+  }
   else {
     incrementPoints();
-  }
+    
   playSound.call(this);
+}
 }
 function restart() {
   console.log("restart");
@@ -165,7 +173,7 @@ function addRandomDurationAndLeft(){
   const container = this;
    // create random values for CSS properties
    let startTop = Math.floor((Math.random() * (80 - 20) + 20));
-   let animationDuration = Math.floor( (Math.random() * (23 - 2) + 2));
+   let animationDuration = Math.floor( (Math.random() * (17 - 3) + 3));
    let scale = Math.random() * (2 - 0.3) + 0.3;
    console.log("Style.left: " + startTop + " animation-duration: " + animationDuration);
    // add random CSS properties to element 
@@ -178,7 +186,7 @@ function addRandomDurationAndTop(){
   const container = this;
   // create random values for CSS attributes
   let startSide = Math.floor( (Math.random() * (80 - 20) + 20));
-  let animationDuration = Math.floor( (Math.random() * (23 - 2) + 2));
+  let animationDuration = Math.floor( (Math.random() * (17 - 3) + 3));
   let scale = Math.random() * (2 - 0.3) + 0.3;
   console.log("Style.top: " + startSide + " animation-duration: " + animationDuration);
   // add/change CSS attributes
@@ -193,35 +201,38 @@ function playSound(){
     case elements.virusBlue:
     case elements.virusRed:
     case elements.virusGreen:
+      sounds.badSound3.play();
+      sounds.badSound3.currentTime = 0;
+      break;
     case elements.virusPink:
     case elements.virusYellow:
-        sounds.goodSound1.play();
-        sounds.goodSound1.currentTime = 0;
-        break;
     case elements.virusCorona2:
     case elements.virusBlue2:
+      sounds.badSound1.play();
+      sounds.badSound1.currentTime = 0;
+        break;
     case elements.virusRed2:
     case elements.virusGreen2:
     case elements.virusPink2:
     case elements.virusYellow2:
     case elements.virusYellow3:
-      sounds.goodSound2.play();
-      sounds.goodSound2.currentTime = 0;
-      break;
-    case elements.virusUpdate:
-    case elements.virusUpdate6:
-      sounds.badSound1.play();
-      sounds.badSound1.currentTime = 0;
-      break;
-    case elements.virusUpdate2:
-    case elements.virusUpdate5:
       sounds.badSound2.play();
       sounds.badSound2.currentTime = 0;
       break;
+    case elements.virusUpdate:
+    case elements.virusUpdate6:
+      sounds.goodSound1.play();
+      sounds.goodSound1.currentTime = 0;
+      break;
+    case elements.virusUpdate2:
+    case elements.virusUpdate5:
+      sounds.goodSound2.play();
+      sounds.goodSound2.currentTime = 0;
+      break;
     case elements.virusUpdate3:
     case elements.virusUpdate4:
-      sounds.badSound3.play();
-      sounds.badSound3.currentTime = 0;
+      sounds.goodSound3.play();
+      sounds.goodSound3.currentTime = 0;
       break;
   }
 }
