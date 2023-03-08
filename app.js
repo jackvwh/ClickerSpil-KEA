@@ -47,7 +47,6 @@ let currentClick = {};
 window.addEventListener("load", ready);
 
 function ready() {
-  console.log("JavaScript ready!");
   document.querySelector("#btn_start").addEventListener("click", start);
   document.querySelector("#btn_restart").addEventListener("click", start);
   document.querySelector("#btn_goToStart").addEventListener("click", showStartScreen);
@@ -55,7 +54,6 @@ function ready() {
   muteNumber();
 }
 function start() {
-  console.log("GAME STARTING!");
   isGameRunning = true; 
   // reset lives and points before game start
   resetLives();
