@@ -57,10 +57,9 @@ function ready() {
 function start() {
   console.log("GAME STARTING!");
   isGameRunning = true; 
-  // reset everything before game start
+  // reset lives and points before game start
   resetLives();
   resetPoints();
-  resetTimer();
   showGameScreen();
   // start timer
   startTimer();
@@ -72,36 +71,29 @@ function start() {
   sounds.startSound1.play();
 }
 function startAnimations(){
-  console.log("start animations");
   // Start animationer
   for (let i in elements){
     randomAnimation.call(elements[i]);
   }
 }
 function eventListenerClick(){
-  // Registrer click
   for (let i in elements){
     elements[i].addEventListener("mousedown",randomClick);
-  }CountQueuingStrategy
+  }
 }
 function eventListenerIteration(){
-  // restart position after each iteration 
   for (let i in elements){
     elements[i].addEventListener("animationiteration",restart);
   }
 }
 function randomAnimation(){
-  console.log("Animation being ADDED");
   const container = this;
   /*****  random container animation*/
   let i = Math.floor( (Math.random() * animation.length));
   container.classList.add(animation[i]);
   // save animation with element in currentAnimation:{}
   currentAnimation[container.id] = animation[i];
-  console.log("saved " + animation[i] + " in currentAnimation Object key: " + container.id);
-  console.log(currentAnimation);
   // random start position and speed selecting
-  console.log("Start position and animation-duration being ADDED");
   if ( animation[i] === "top"){
       addRandomDurationAndLeft.call(this);
   }
@@ -110,10 +102,9 @@ function randomAnimation(){
   }
 }
 function randomClick(){
-  console.log("CLICK animation");
   const container = this;
   // fjern click
-  container.removeEventListener("click", randomClick);
+  container.removeEventListener("mousedown", randomClick);
   // Pause animation
   container.classList.add("paused");
   /*****  random clickAnimation */
@@ -122,7 +113,6 @@ function randomClick(){
   container.querySelector("img").classList.add(clickAnimation[i]);
   // store click animation with container in currentClick obj array
   currentClick[container.id] = clickAnimation[i];
-  console.log("Added CLICK animation: ", clickAnimation[i]);
   container.addEventListener("animationend", restart);
   // check for lives decrement or points increment
   if (container === elements.virusUpdate || 
@@ -130,65 +120,54 @@ function randomClick(){
       container === elements.virusUpdate3 || 
       container === elements.virusUpdate4 || 
       container === elements.virusUpdate5 || 
-      container === elements.virusUpdate6 )
-  {
+      container === elements.virusUpdate6 ){
     decrementLives();
   }
   else {
     incrementPoints();
-    
+  }
   playSound.call(this);
 }
-}
 function restart() {
-  console.log("restart");
   const container = this;
   // fjern event der bringer os herind
   container.removeEventListener("animationend", restart);
   // fjern CLICK animation
   container.querySelector("img").classList.remove(currentClick[container.id]);
-  console.log("remove Click animation->", currentClick[container.id]);
   // fjern pause  
   container.classList.remove("paused");
-  console.log("remove paused animation");
   // remove animation
   container.classList.remove(currentAnimation[container.id]);
   // remove CSS attribute
   container.removeAttribute("style");
   // genstart animation
   container.classList.remove(currentAnimation[container.id]);
-  console.log("remove current class = " + currentAnimation[container.id] + " from " + container.id );
   // force reflow
   container.offsetWidth;
   if (isGameRunning){
       // Add new animation
       randomAnimation.call(this);
+      // gør det muligt at klikke på container igen
+      container.addEventListener("click", randomClick);
     }
-  console.log("New random class added = ", currentAnimation[container.id] + " to " + container.id);
-  // gør det muligt at klikke på container igen
-  container.addEventListener("click", randomClick);
 }
-// Add random duration and left position 
 function addRandomDurationAndLeft(){
   const container = this;
    // create random values for CSS properties
    let startTop = Math.floor((Math.random() * (80 - 20) + 20));
    let animationDuration = Math.floor( (Math.random() * (17 - 3) + 3));
    let scale = Math.random() * (2 - 0.3) + 0.3;
-   console.log("Style.left: " + startTop + " animation-duration: " + animationDuration);
    // add random CSS properties to element 
    container.style.left = (startTop + "%");
    container.style.scale = (scale);
    container.style.animationDuration = (animationDuration + "s");
 }
-// Add random duration and top position 
 function addRandomDurationAndTop(){
   const container = this;
   // create random values for CSS attributes
   let startSide = Math.floor( (Math.random() * (80 - 20) + 20));
   let animationDuration = Math.floor( (Math.random() * (17 - 3) + 3));
   let scale = Math.random() * (2 - 0.3) + 0.3;
-  console.log("Style.top: " + startSide + " animation-duration: " + animationDuration);
   // add/change CSS attributes
   container.style.top = (startSide + "%");
   container.style.scale = (scale);
@@ -237,7 +216,6 @@ function playSound(){
   }
 }
 function decrementLives(){
-  console.log("decrementLives");
   displayDecrementWindows();
   lives--;
     if ( lives === 0){
@@ -245,13 +223,10 @@ function decrementLives(){
     }
 }
 function displayDecrementWindows(){
-  console.log("displayDecrementWindows");
-  console.log("Points= " + points + " and lives= " + lives);
   document.querySelector(`#health${lives}`).classList.remove("active_windows");
   document.querySelector(`#health${lives}`).classList.add("broken_windows");
 }
 function incrementPoints(){
-  console.log("incrementPoints");
   points++;
   displayPoints();
   if (points === MUTE){
@@ -268,7 +243,6 @@ function helloNumber(){
 function muteNumber(){
   let mute = Math.floor(Math.random() * (5 - 2) + 2);
   MUTE = mute;
-  console.log(MUTE);
 }
 function startTimer() {
   //Starter timeren (ur-animationen)
@@ -277,8 +251,6 @@ function startTimer() {
   document.querySelector("#minut_viser").addEventListener("animationend", timeIsUp);
 }
 function timeIsUp() {
-console.log("Tiden er gået!");
-
 if (points >= WON) {
    levelComplete();
 } else {
@@ -318,14 +290,12 @@ function resetTimer(){
   document.querySelector("#time_container").offsetWidth;
 }
 function gameOver(){
-  console.log("GameOver");
   document.querySelector("#game_over").classList.remove("hidden");
   end();
   sounds.startSound1.pause();
   sounds.endSound1.play();
 } 
 function levelComplete(){
-  console.log("levelComplete");
   document.querySelector("#level_complete").classList.remove("hidden");
   end();
   //pause game sound and play end sound
@@ -333,8 +303,8 @@ function levelComplete(){
   sounds.endSound2.play();
 }
 function end() {
-  console.log("JavaScript SLUTTER!");
   isGameRunning = false;
+  resetTimer();
   for (let i in elements){
     // remove classes
     elements[i].classList.remove(currentAnimation[elements[i].id]);
