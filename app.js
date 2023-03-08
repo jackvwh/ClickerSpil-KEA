@@ -65,13 +65,13 @@ function start() {
   // start timer
   startTimer();
   // Game elements ACTIVATE! 
-  startAnimationer();
+  startAnimations();
   eventListenerClick();
   eventListenerIteration();
   // play game sound
   sounds.startSound1.play();
 }
-function startAnimationer(){
+function startAnimations(){
   console.log("start animations");
   // Start animationer
   for (let i in elements){
@@ -81,7 +81,7 @@ function startAnimationer(){
 function eventListenerClick(){
   // Registrer click
   for (let i in elements){
-    elements[i].addEventListener("click",randomClick);
+    elements[i].addEventListener("mousedown",randomClick);
   }CountQueuingStrategy
 }
 function eventListenerIteration(){
